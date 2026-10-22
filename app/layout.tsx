@@ -60,7 +60,17 @@ export const metadata: Metadata = {
     images: ["/logo.jpg"],
     type: "website",
   },
+  icons: {
+    icon: [
+      { url: "/icon.png", sizes: "32x32", type: "image/png" },
+      { url: "/icon-192.png", sizes: "192x192", type: "image/png" },
+      { url: "/logo.jpg", type: "image/jpeg" },
+    ],
+    shortcut: "/icon.png",
+    apple: "/apple-icon.png",
+  },
 };
+
 
 export default function RootLayout({
   children,

@@ -2,6 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { ArrowRight, MessageCircle } from "lucide-react";
 import { ServiceCategory } from "@/lib/data";
 import { useEnquiryModal } from "@/context/EnquiryModalContext";
@@ -51,17 +52,27 @@ export default function ServiceCard({ category, compact = false }: ServiceCardPr
             </p>
           </div>
 
-          <div className="mt-2.5 pt-2 border-t border-[#E8E3D8]">
-            <button
-              type="button"
-              onClick={() => openEnquiryModal(category.title)}
-              className="w-full inline-flex items-center justify-center gap-1.5 bg-[#173B2B] hover:bg-[#F36B12] text-white font-body font-semibold text-[11px] py-1.5 px-2 rounded-lg transition-colors active:scale-95"
-              aria-label={`Enquire about ${category.title}`}
-            >
-              <MessageCircle className="w-3 h-3 fill-[#F36B12] text-transparent" />
-              <span>Enquire</span>
-            </button>
-          </div>
+        
+<div className="mt-2.5 pt-2 border-t border-[#E8E3D8] flex flex-col gap-1.5">
+  <Link
+    href={`/services/${category.id}`}
+    className="w-full inline-flex items-center justify-center gap-1.5 bg-[#F36B12] hover:bg-[#d95b0b] text-white font-body font-semibold text-[11px] py-1.5 px-2 rounded-lg transition-colors active:scale-95"
+    aria-label={`View listings for ${category.title}`}
+  >
+    <span>View Listing</span>
+    <ArrowRight className="w-3 h-3" />
+  </Link>
+
+  <button
+    type="button"
+    onClick={() => openEnquiryModal(category.title)}
+    className="w-full inline-flex items-center justify-center gap-1.5 bg-[#173B2B] hover:bg-[#244F3B] text-white font-body font-semibold text-[11px] py-1.5 px-2 rounded-lg transition-colors active:scale-95"
+    aria-label={`Enquire about ${category.title}`}
+  >
+    <MessageCircle className="w-3 h-3 fill-[#F36B12] text-transparent" />
+    <span>Enquire</span>
+  </button>
+</div>
         </div>
       </article>
     );
@@ -112,19 +123,29 @@ export default function ServiceCard({ category, compact = false }: ServiceCardPr
           </p>
         </div>
 
-        {/* Card CTA Action */}
-        <div className="mt-5 pt-3.5 border-t border-[#E8E3D8]">
-          <button
-            type="button"
-            onClick={() => openEnquiryModal(category.title)}
-            className="w-full inline-flex items-center justify-center gap-2 bg-[#173B2B] hover:bg-[#F36B12] text-white hover:text-white font-body font-semibold text-xs sm:text-sm py-2.5 px-4 rounded-xl transition-all duration-200 group/btn shadow-sm active:scale-98"
-            aria-label={`Enquire about ${category.title} on WhatsApp`}
-          >
-            <MessageCircle className="w-4 h-4 fill-[#F36B12] text-transparent group-hover/btn:fill-white transition-colors" />
-            <span>Enquire on WhatsApp</span>
-            <ArrowRight className="w-3.5 h-3.5 group-hover/btn:translate-x-1 transition-transform" />
-          </button>
-        </div>
+       
+        
+{/* Card CTA Actions */}
+<div className="mt-5 pt-3.5 border-t border-[#E8E3D8] flex flex-col sm:flex-row gap-2">
+  <Link
+    href={`/services/${category.id}`}
+    className="flex-1 inline-flex items-center justify-center gap-1.5 bg-[#F36B12] hover:bg-[#d95b0b] text-white font-body font-semibold text-xs sm:text-sm py-2.5 px-3 rounded-xl transition-all duration-200 shadow-sm active:scale-95"
+    aria-label={`View listings for ${category.title}`}
+  >
+    <span>View Listing</span>
+    <ArrowRight className="w-3.5 h-3.5" />
+  </Link>
+
+  <button
+    type="button"
+    onClick={() => openEnquiryModal(category.title)}
+    className="flex-1 inline-flex items-center justify-center gap-2 bg-[#173B2B] hover:bg-[#244F3B] text-white font-body font-semibold text-xs sm:text-sm py-2.5 px-3 rounded-xl transition-all duration-200 shadow-sm active:scale-95"
+    aria-label={`Enquire about ${category.title} on WhatsApp`}
+  >
+    <MessageCircle className="w-4 h-4 fill-[#F36B12] text-transparent" />
+    <span>Enquire</span>
+  </button>
+</div>
       </div>
     </article>
   );

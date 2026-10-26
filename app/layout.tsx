@@ -13,21 +13,18 @@ const barlowCondensed = Barlow_Condensed({
 const dmSans = DM_Sans({
   variable: "--font-body",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
   display: "swap",
 });
 
 const caveat = Caveat({
   variable: "--font-script",
   subsets: ["latin"],
-  weight: ["400", "700"],
   display: "swap",
 });
 
 const dancingScript = Dancing_Script({
   variable: "--font-dancing",
   subsets: ["latin"],
-  weight: ["600", "700"],
   display: "swap",
 });
 

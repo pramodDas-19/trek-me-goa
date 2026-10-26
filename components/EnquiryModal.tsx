@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Calendar, MessageSquare, User, Sparkles, Check } from "lucide-react";
+import { X, Calendar, MessageSquare, User, Sparkles, Check, MapPin } from "lucide-react";
 import { useEnquiryModal } from "@/context/EnquiryModalContext";
 import { WHATSAPP_CONFIG } from "@/lib/config";
 import { SERVICE_CATEGORIES, LOCAL_EXPERIENCES } from "@/lib/data";
+import { SERVICE_LISTINGS, ServiceListing } from "@/lib/listings";
 
 const GROUP_SIZES = [
   "1 Person",
@@ -22,6 +23,19 @@ function WhatsAppIcon({ className = "w-5 h-5" }: { className?: string }) {
   );
 }
 
+// Group listings by category for categorized selection
+const WATERFALL_LISTINGS = SERVICE_LISTINGS.filter((l) => l.serviceId === "waterfall-treks");
+const OFFBEAT_LISTINGS = SERVICE_LISTINGS.filter((l) => l.serviceId === "offbeat-trekking");
+const KAYAKING_LISTINGS = SERVICE_LISTINGS.filter((l) => l.serviceId === "kayaking");
+const WATERSPORTS_LISTINGS = SERVICE_LISTINGS.filter((l) => l.serviceId === "watersports-surfing");
+const DUDHSAGAR_LISTINGS = SERVICE_LISTINGS.filter((l) => l.serviceId === "dudhsagar-waterfall");
+const SCUBA_LISTINGS = SERVICE_LISTINGS.filter((l) => l.serviceId === "scuba-diving");
+const ATV_LISTINGS = SERVICE_LISTINGS.filter((l) => l.serviceId === "atv-booking");
+const FARM_LISTINGS = SERVICE_LISTINGS.filter((l) => l.serviceId === "farm-picnic");
+const HERITAGE_LISTINGS = SERVICE_LISTINGS.filter((l) => l.serviceId === "churches-chapels");
+const MOUNTAIN_LISTINGS = SERVICE_LISTINGS.filter((l) => l.serviceId === "mountain-treks");
+const CAVE_LISTINGS = SERVICE_LISTINGS.filter((l) => l.serviceId === "cave-exploration");
+
 function EnquiryForm({
   initialActivity,
   onClose,
@@ -30,11 +44,53 @@ function EnquiryForm({
   onClose: () => void;
 }) {
   const [name, setName] = useState("");
-  const [activity, setActivity] = useState(initialActivity || SERVICE_CATEGORIES[0].title);
+  const [activity, setActivity] = useState(initialActivity || SERVICE_LISTINGS[0].title);
   const [date, setDate] = useState("");
   const [groupSize, setGroupSize] = useState("2 People");
   const [notes, setNotes] = useState("");
   const [error, setError] = useState("");
+
+  useEffect(() => {
+    if (initialActivity) {
+      setActivity(initialActivity);
+    }
+  }, [initialActivity]);
+
+  // Find matching details for the currently selected activity
+  const matchedListing = SERVICE_LISTINGS.find(
+    (l) => l.title.toLowerCase() === activity.toLowerCase() || l.id === activity
+  );
+  const matchedExperience = LOCAL_EXPERIENCES.find(
+    (e) => e.title.toLowerCase() === activity.toLowerCase() || e.id === activity
+  );
+  const matchedCategory = SERVICE_CATEGORIES.find(
+    (c) => c.title.toLowerCase() === activity.toLowerCase() || c.id === activity
+  );
+
+  const displayImage =
+    matchedListing?.image || matchedExperience?.image || matchedCategory?.image;
+  const displayLocation =
+    matchedListing?.location || matchedExperience?.locationNote;
+  const displayPrice = matchedListing?.price
+    ? `₹${matchedListing.price.toLocaleString("en-IN")}${
+        matchedListing.priceUnit ? ` / ${matchedListing.priceUnit.replace("per ", "")}` : ""
+      }`
+    : matchedListing?.pricingOptions?.[0]
+    ? `From ₹${matchedListing.pricingOptions[0].price.toLocaleString("en-IN")}`
+    : null;
+  const displayGroupLabel = matchedListing?.groupLabel;
+
+  // Check if current activity is already represented in standard options
+  const isCustomOption =
+    !matchedListing &&
+    !matchedExperience &&
+    !matchedCategory &&
+    ![
+      "Custom Group / Corporate Trek",
+      "General Adventure Enquiry",
+      "Quick Goa Trek Enquiry",
+      "Photo Gallery & Upcoming Trek Dates",
+    ].includes(activity);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -45,15 +101,35 @@ function EnquiryForm({
 
     setError("");
 
-    // Build the formatted WhatsApp message with clean markdown & emojis
+    // Build the formatted WhatsApp message with clean markdown & details
     const messageLines = [
       `🌿 *Trek Me @ Goa — Expedition Enquiry*`,
       ``,
       `👤 *Name:* ${name.trim()}`,
-      `📍 *Activity:* ${activity}`,
-      `📅 *Preferred Date:* ${date ? date : "Flexible / Upcoming Dates"}`,
-      `👥 *Group Size:* ${groupSize}`,
+      `📍 *Enquiring For:* ${activity}`,
     ];
+
+    if (matchedListing?.location) {
+      messageLines.push(`🗺️ *Location:* ${matchedListing.location}`);
+    } else if (matchedExperience?.locationNote) {
+      messageLines.push(`🗺️ *Location:* ${matchedExperience.locationNote}`);
+    }
+
+    if (matchedListing?.price) {
+      messageLines.push(
+        `💰 *Package Price:* ₹${matchedListing.price.toLocaleString("en-IN")} ${
+          matchedListing.priceUnit || ""
+        }`
+      );
+    } else if (matchedListing?.pricingOptions?.length) {
+      const optionsText = matchedListing.pricingOptions
+        .map((o) => `${o.label}: ₹${o.price.toLocaleString("en-IN")}`)
+        .join(" | ");
+      messageLines.push(`💰 *Pricing:* ${optionsText}`);
+    }
+
+    messageLines.push(`📅 *Preferred Date:* ${date ? date : "Flexible / Upcoming Dates"}`);
+    messageLines.push(`👥 *Group Size:* ${groupSize}`);
 
     if (notes.trim()) {
       messageLines.push(`💬 *Special Requests / Notes:* ${notes.trim()}`);
@@ -74,13 +150,65 @@ function EnquiryForm({
   };
 
   return (
-    <form onSubmit={handleSubmit} className="p-5 sm:p-6 space-y-4">
+    <form onSubmit={handleSubmit} className="p-5 sm:p-6 space-y-4 overflow-y-auto max-h-[calc(90vh-90px)]">
       {/* Error Alert */}
       {error && (
         <div className="p-3 bg-red-50 border border-red-200 text-red-700 text-xs rounded-xl font-body flex items-center gap-2">
           <span>⚠️ {error}</span>
         </div>
       )}
+
+      {/* 🌟 Highlighted "Enquiring For" Card */}
+      <div className="bg-[#173B2B]/5 border-2 border-[#173B2B]/20 rounded-2xl p-3 sm:p-3.5 flex items-center gap-3.5 relative overflow-hidden transition-all">
+        {displayImage ? (
+          <div className="relative w-14 h-14 sm:w-16 sm:h-16 rounded-xl overflow-hidden shrink-0 border border-[#173B2B]/15 shadow-sm bg-white">
+            <Image
+              src={displayImage}
+              alt={activity}
+              fill
+              sizes="64px"
+              className="object-cover"
+            />
+          </div>
+        ) : (
+          <div className="w-14 h-14 rounded-xl bg-[#F36B12]/15 border border-[#F36B12]/30 flex items-center justify-center shrink-0 text-[#F36B12]">
+            <Sparkles className="w-6 h-6" />
+          </div>
+        )}
+
+        <div className="flex-1 min-w-0">
+          <div className="flex items-center gap-2 mb-1 flex-wrap">
+            <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-body font-bold tracking-wider uppercase bg-[#F36B12] text-white shadow-xs">
+              Enquiring For
+            </span>
+            {displayLocation && (
+              <span className="text-[11px] font-body text-[#576259] truncate font-medium flex items-center gap-0.5">
+                <MapPin className="w-3 h-3 text-[#173B2B]/70 shrink-0" />
+                <span className="truncate">{displayLocation}</span>
+              </span>
+            )}
+          </div>
+
+          <h3 className="font-heading font-extrabold text-sm sm:text-base text-[#173B2B] leading-snug line-clamp-2">
+            {activity}
+          </h3>
+
+          {(displayPrice || displayGroupLabel) && (
+            <div className="flex items-center gap-2 mt-1 flex-wrap">
+              {displayPrice && (
+                <span className="text-xs font-body font-bold text-[#F36B12]">
+                  {displayPrice}
+                </span>
+              )}
+              {displayGroupLabel && (
+                <span className="text-[10px] font-body text-[#576259] truncate">
+                  • {displayGroupLabel}
+                </span>
+              )}
+            </div>
+          )}
+        </div>
+      </div>
 
       {/* Field 1: Your Name */}
       <div>
@@ -105,11 +233,16 @@ function EnquiryForm({
         </div>
       </div>
 
-      {/* Field 2: Select Activity / Service */}
+      {/* Field 2: Select Activity / Service (Full Catalog List) */}
       <div>
-        <label className="block text-xs font-body font-bold text-[#173B2B] uppercase tracking-wider mb-1.5">
-          Select Activity / Expedition
-        </label>
+        <div className="flex items-center justify-between mb-1.5">
+          <label className="block text-xs font-body font-bold text-[#173B2B] uppercase tracking-wider">
+            Select Activity / Expedition
+          </label>
+          <span className="text-[11px] text-[#576259] font-body">
+            32+ Treks & Adventures
+          </span>
+        </div>
         <div className="relative">
           <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-[#F36B12]">
             <Sparkles className="w-4 h-4" />
@@ -117,23 +250,125 @@ function EnquiryForm({
           <select
             value={activity}
             onChange={(e) => setActivity(e.target.value)}
-            className="w-full pl-9 pr-8 py-2.5 rounded-xl bg-white border border-[#E8E3D8] text-[#242A25] text-sm font-body focus:border-[#F36B12] focus:ring-2 focus:ring-[#F36B12]/20 transition-all outline-none appearance-none cursor-pointer"
+            className="w-full pl-9 pr-8 py-2.5 rounded-xl bg-white border border-[#E8E3D8] text-[#242A25] text-sm font-body font-medium focus:border-[#F36B12] focus:ring-2 focus:ring-[#F36B12]/20 transition-all outline-none appearance-none cursor-pointer"
           >
-            <optgroup label="Trekking & Adventure Categories">
-              {SERVICE_CATEGORIES.map((c) => (
-                <option key={c.id} value={c.title}>
-                  {c.title}
+            {/* Custom or selected activity not in standard list */}
+            {isCustomOption && (
+              <option value={activity}>
+                {activity}
+              </option>
+            )}
+
+            {/* WATERFALL TREKS */}
+            <optgroup label="🌊 Waterfall Treks (8 Expeditions)">
+              {WATERFALL_LISTINGS.map((l) => (
+                <option key={l.id} value={l.title}>
+                  {l.title} {l.price ? `(₹${l.price.toLocaleString("en-IN")}${l.priceUnit ? `/${l.priceUnit.replace("per ", "")}` : ""})` : ""}
                 </option>
               ))}
             </optgroup>
-            <optgroup label="Authentic Local Experiences">
+
+            {/* OFFBEAT & COASTAL TREKS */}
+            <optgroup label="🧗 Offbeat Coastal & Forest Treks (7 Expeditions)">
+              {OFFBEAT_LISTINGS.map((l) => (
+                <option key={l.id} value={l.title}>
+                  {l.title} {l.price ? `(₹${l.price.toLocaleString("en-IN")}${l.priceUnit ? `/${l.priceUnit.replace("per ", "")}` : ""})` : ""}
+                </option>
+              ))}
+            </optgroup>
+
+            {/* KAYAKING & WATERWAY SAFARIS */}
+            <optgroup label="🚣 Kayaking & Boat Safaris (4 Expeditions)">
+              {KAYAKING_LISTINGS.map((l) => (
+                <option key={l.id} value={l.title}>
+                  {l.title} {l.price ? `(₹${l.price.toLocaleString("en-IN")}${l.priceUnit ? `/${l.priceUnit.replace("per ", "")}` : ""})` : ""}
+                </option>
+              ))}
+            </optgroup>
+
+            {/* WATERSPORTS & SURFING */}
+            <optgroup label="🏄 Watersports & Surfing Packages (3 Packages)">
+              {WATERSPORTS_LISTINGS.map((l) => (
+                <option key={l.id} value={l.title}>
+                  {l.title} {l.price ? `(₹${l.price.toLocaleString("en-IN")}${l.priceUnit ? `/${l.priceUnit.replace("per ", "")}` : ""})` : ""}
+                </option>
+              ))}
+            </optgroup>
+
+            {/* DUDHSAGAR JEEP SAFARI */}
+            <optgroup label="🚙 Dudhsagar Waterfall Tours">
+              {DUDHSAGAR_LISTINGS.map((l) => (
+                <option key={l.id} value={l.title}>
+                  {l.title} {l.price ? `(₹${l.price.toLocaleString("en-IN")}${l.priceUnit ? `/${l.priceUnit.replace("per ", "")}` : ""})` : ""}
+                </option>
+              ))}
+            </optgroup>
+
+            {/* SCUBA DIVING */}
+            <optgroup label="🤿 Scuba Diving Adventures">
+              {SCUBA_LISTINGS.map((l) => (
+                <option key={l.id} value={l.title}>
+                  {l.title} {l.price ? `(₹${l.price.toLocaleString("en-IN")}${l.priceUnit ? `/${l.priceUnit.replace("per ", "")}` : ""})` : ""}
+                </option>
+              ))}
+            </optgroup>
+
+            {/* ATV QUAD BIKING */}
+            <optgroup label="🏎️ ATV Off-Road Quad Biking">
+              {ATV_LISTINGS.map((l) => (
+                <option key={l.id} value={l.title}>
+                  {l.title} {l.price ? `(from ₹${l.price.toLocaleString("en-IN")})` : ""}
+                </option>
+              ))}
+            </optgroup>
+
+            {/* FARM PICNIC */}
+            <optgroup label="🐎 Farm Picnics & Stays">
+              {FARM_LISTINGS.map((l) => (
+                <option key={l.id} value={l.title}>
+                  {l.title} {l.price ? `(₹${l.price.toLocaleString("en-IN")}${l.priceUnit ? `/${l.priceUnit.replace("per ", "")}` : ""})` : ""}
+                </option>
+              ))}
+            </optgroup>
+
+            {/* GOA HERITAGE SIGHTSEEING */}
+            <optgroup label="🏛️ Goa Heritage Sightseeing (2 Tours)">
+              {HERITAGE_LISTINGS.map((l) => (
+                <option key={l.id} value={l.title}>
+                  {l.title} {l.price ? `(₹${l.price.toLocaleString("en-IN")}${l.priceUnit ? `/${l.priceUnit.replace("per ", "")}` : ""})` : ""}
+                </option>
+              ))}
+            </optgroup>
+
+            {/* MOUNTAIN TREKS */}
+            <optgroup label="⛰️ Sahyadri Mountain Treks (2 Peaks)">
+              {MOUNTAIN_LISTINGS.map((l) => (
+                <option key={l.id} value={l.title}>
+                  {l.title} {l.price ? `(₹${l.price.toLocaleString("en-IN")}${l.priceUnit ? `/${l.priceUnit.replace("per ", "")}` : ""})` : ""}
+                </option>
+              ))}
+            </optgroup>
+
+            {/* CAVE EXPLORATION */}
+            <optgroup label="🦇 Ancient Cave Exploration (2 Caverns)">
+              {CAVE_LISTINGS.map((l) => (
+                <option key={l.id} value={l.title}>
+                  {l.title} {l.price ? `(₹${l.price.toLocaleString("en-IN")}${l.priceUnit ? `/${l.priceUnit.replace("per ", "")}` : ""})` : ""}
+                </option>
+              ))}
+            </optgroup>
+
+            {/* AUTHENTIC LOCAL EXPERIENCES */}
+            <optgroup label="🥥 Authentic Local Goan Experiences">
               {LOCAL_EXPERIENCES.map((e) => (
                 <option key={e.id} value={e.title}>
-                  {e.title}
+                  {e.title} ({e.locationNote})
                 </option>
               ))}
             </optgroup>
-            <optgroup label="Custom & Corporate">
+
+            {/* GENERAL & CUSTOM */}
+            <optgroup label="✨ General Categories & Custom Booking">
               <option value="Custom Group / Corporate Trek">
                 Custom Group / Corporate Trek
               </option>
@@ -146,6 +381,11 @@ function EnquiryForm({
               <option value="Photo Gallery & Upcoming Trek Dates">
                 Photo Gallery & Upcoming Trek Dates
               </option>
+              {SERVICE_CATEGORIES.map((c) => (
+                <option key={c.id} value={c.title}>
+                  {c.title} (General Category)
+                </option>
+              ))}
             </optgroup>
           </select>
           <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none text-[#576259]">
@@ -288,10 +528,10 @@ export default function EnquiryModal() {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.94, y: 15 }}
             transition={{ duration: 0.25, ease: "easeOut" }}
-            className="relative w-full max-w-lg bg-[#F8F6F0] rounded-3xl shadow-2xl overflow-hidden z-10 border border-[#E8E3D8] my-auto"
+            className="relative w-full max-w-lg bg-[#F8F6F0] rounded-3xl shadow-2xl overflow-hidden z-10 border border-[#E8E3D8] my-auto max-h-[92vh] flex flex-col"
           >
             {/* Header: Forest Green with Brand Accent */}
-            <div className="bg-[#173B2B] text-white p-5 sm:p-6 relative overflow-hidden">
+            <div className="bg-[#173B2B] text-white p-5 sm:p-6 relative overflow-hidden shrink-0">
               {/* Subtle background glow */}
               <div className="absolute top-0 right-0 w-48 h-48 bg-[#F36B12]/15 rounded-full blur-2xl pointer-events-none" />
 

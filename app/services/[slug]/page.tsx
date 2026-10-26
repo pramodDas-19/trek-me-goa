@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import {
@@ -11,7 +10,8 @@ import {
 
 import { SERVICE_CATEGORIES } from "@/lib/data";
 import { SERVICE_LISTINGS } from "@/lib/listings";
-import ListingEnquiryButton from "../../../components/ListingEnquiryButton";
+import ListingEnquiryButton from "@/components/ListingEnquiryButton";
+import ListingCardMedia from "@/components/ListingCardMedia";
 
 export const instant = false;
 
@@ -23,13 +23,16 @@ export default async function ServiceListingPage({
   const { slug } = await params;
 
   const category = SERVICE_CATEGORIES.find(
-    (item) => item.id === slug
+    (item) =>
+      item.id === slug ||
+      (slug === "heritage-sightseeing" && item.id === "churches-chapels")
   );
 
   if (!category) notFound();
 
+  const targetServiceId = category.id;
   const listings = SERVICE_LISTINGS.filter(
-    (item) => item.serviceId === slug
+    (item) => item.serviceId === targetServiceId
   );
 
   return (
@@ -116,25 +119,13 @@ export default async function ServiceListingPage({
                 key={listing.id}
                 className="group flex min-w-0 flex-col overflow-hidden rounded-2xl border border-[#E8E3D8] bg-white shadow-[0_5px_25px_rgba(23,59,43,0.05)] transition duration-300 hover:-translate-y-1 hover:border-[#D7C8B6] hover:shadow-[0_18px_40px_rgba(23,59,43,0.12)]"
               >
-                {/* IMAGE */}
-                <div className="relative h-56 shrink-0 overflow-hidden bg-[#E9E8DF] sm:h-60">
-                  <Image
-                    src={listing.image}
-                    alt={listing.title}
-                    fill
-                    sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 33vw"
-                    className="object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
-
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-black/5" />
-
-                  <div className="absolute bottom-4 left-4">
-                    <span className="inline-flex items-center gap-1.5 rounded-full border border-white/20 bg-black/40 px-3 py-1.5 text-xs font-semibold text-white backdrop-blur-md">
-                      <MapPin className="h-3.5 w-3.5 text-[#FFAB70]" />
-                      Goa, India
-                    </span>
-                  </div>
-                </div>
+                {/* IMAGE / CAROUSEL */}
+                <ListingCardMedia
+                  title={listing.title}
+                  image={listing.image}
+                  images={listing.images}
+                  location={listing.location}
+                />
 
                 {/* DETAILS */}
                 <div className="flex flex-1 flex-col p-5 sm:p-6">
@@ -148,19 +139,54 @@ export default async function ServiceListingPage({
 
                   {/* PRICE */}
                   <div className="mt-5 rounded-xl border border-[#E8E3D8] bg-[#F8F7F2] p-4">
-                    <p className="text-[11px] font-bold uppercase tracking-[0.15em] text-[#242A25]/55">
-                      Starting price
-                    </p>
+                    {listing.price !== undefined ? (
+                      <>
+                        <p className="text-[11px] font-bold uppercase tracking-[0.15em] text-[#242A25]/55">
+                          Starting price
+                        </p>
 
-                    <div className="mt-1 flex flex-wrap items-baseline gap-1.5">
-                      <span className="text-3xl font-black tracking-tight text-[#173B2B]">
-                        ₹{listing.price.toLocaleString("en-IN")}
-                      </span>
+                        <div className="mt-1 flex flex-wrap items-baseline gap-1.5">
+                          <span className="text-3xl font-black tracking-tight text-[#173B2B]">
+                            ₹{listing.price.toLocaleString("en-IN")}
+                          </span>
 
-                      <span className="text-sm font-medium text-[#242A25]/60">
-                        / {listing.priceUnit === "per person" ? "person" : "group"}
-                      </span>
-                    </div>
+                          {listing.priceUnit && (
+                            <span className="text-sm font-medium text-[#242A25]/60">
+                              / {listing.priceUnit === "per person" ? "person" : "group"}
+                            </span>
+                          )}
+                        </div>
+                      </>
+                    ) : (
+                      <div>
+                        <p className="text-[11px] font-bold uppercase tracking-[0.15em] text-[#F36B12]">
+                          Package Enquiry
+                        </p>
+                        <p className="mt-1 text-2xl font-black text-[#173B2B]">
+                          Price on Request
+                        </p>
+                      </div>
+                    )}
+
+                    {/* Pricing Tiers / Options if available */}
+                    {listing.pricingOptions && listing.pricingOptions.length > 0 && (
+                      <div className="mt-3 flex flex-col gap-2 border-t border-[#E8E3D8] pt-2.5">
+                        {listing.pricingOptions.map((opt, i) => (
+                          <div
+                            key={i}
+                            className="flex items-center justify-between rounded-lg bg-white/70 px-3 py-1.5 text-xs font-semibold text-[#173B2B] border border-[#E8E3D8]/80"
+                          >
+                            <span className="text-[#242A25]/80 font-medium">
+                              {opt.label}
+                              {opt.unit ? ` (${opt.unit})` : ""}
+                            </span>
+                            <span className="font-extrabold text-[#F36B12]">
+                              ₹{opt.price.toLocaleString("en-IN")}
+                            </span>
+                          </div>
+                        ))}
+                      </div>
+                    )}
 
                     <div className="mt-3 flex items-start gap-2 border-t border-[#E8E3D8] pt-3">
                       <Users className="mt-0.5 h-4 w-4 shrink-0 text-[#F36B12]" />
@@ -186,7 +212,7 @@ export default async function ServiceListingPage({
                     className="mt-5 inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-xl bg-[#F36B12] px-4 py-3 text-sm font-bold text-white shadow-sm transition hover:bg-[#173B2B] focus:outline-none focus:ring-2 focus:ring-[#F36B12] focus:ring-offset-2"
                   >
                     <MessageCircle className="h-4 w-4" />
-                    Enquire About This Trek
+                    {category.tag === "Trek" ? "Enquire About This Trek" : "Book / Enquire Now"}
                     <ArrowRight className="h-4 w-4" />
                   </ListingEnquiryButton>
                 </div>

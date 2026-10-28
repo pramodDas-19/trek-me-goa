@@ -15,7 +15,7 @@ export interface ServiceListing {
 }
 
 export const SERVICE_LISTINGS: ServiceListing[] = [
-  // OFFBEAT TREKKING — 6 LISTINGS
+  // OFFBEAT TREKKING — 7 LISTINGS
   {
     id: "cabo-de-ram-fort-trek",
     serviceId: "offbeat-trekking",
@@ -28,6 +28,15 @@ export const SERVICE_LISTINGS: ServiceListing[] = [
     groupLabel: "Up to 5 members",
     additionalMemberPrice: 575,
     image: "/images/listings/IMG_9793.PNG",
+    images: [
+      "/images/listings/IMG_9793.PNG",
+      "/images/listings/IMG_9794.PNG",
+      "/images/listings/IMG_9795.PNG",
+      "/images/listings/IMG_9798.PNG",
+      "/images/listings/IMG_9787.PNG",
+      "/images/listings/IMG_9789.PNG",
+    ],
+    location: "Cabo de Rama, South Goa",
   },
   {
     id: "great-south-goa-short-treks",
@@ -40,6 +49,14 @@ export const SERVICE_LISTINGS: ServiceListing[] = [
     groupLabel: "Up to 5 members",
     additionalMemberPrice: 575,
     image: "/images/listings/IMG_9801.PNG",
+    images: [
+      "/images/listings/IMG_9801.PNG",
+      "/images/listings/IMG_9797.PNG",
+      "/images/listings/IMG_9802.PNG",
+      "/images/listings/IMG_9803.PNG",
+      "/images/listings/IMG_9808.PNG",
+    ],
+    location: "South Goa, India",
   },
   {
     id: "old-goa-offbeat-trek",
@@ -52,6 +69,16 @@ export const SERVICE_LISTINGS: ServiceListing[] = [
     groupLabel: "Up to 5 members",
     additionalMemberPrice: 675,
     image: "/images/listings/IMG_9809.PNG",
+    images: [
+      "/images/listings/IMG_9809.PNG",
+      "/images/listings/IMG_9810.PNG",
+      "/images/listings/IMG_9812.PNG",
+      "/images/listings/IMG_9813.PNG",
+      "/images/listings/IMG_9815.PNG",
+      "/images/listings/IMG_9816.PNG",
+      "/images/listings/IMG_9817.PNG",
+    ],
+    location: "Old Goa & Island Fort",
   },
   {
     id: "hidden-moon-beach-trek",
@@ -64,6 +91,12 @@ export const SERVICE_LISTINGS: ServiceListing[] = [
     groupLabel: "Up to 5 members",
     additionalMemberPrice: 575,
     image: "/new/images copy.jpg",
+    images: [
+      "/new/images copy.jpg",
+      "/images/listings/IMG_9804.PNG",
+      "/images/listings/IMG_9790.PNG",
+    ],
+    location: "Hidden Moon Beach, Goa",
   },
   {
     id: "raia-village-sightseeing",
@@ -76,6 +109,12 @@ export const SERVICE_LISTINGS: ServiceListing[] = [
     groupLabel: "Up to 5 members",
     additionalMemberPrice: 375,
     image: "/images/listings/IMG_9820.PNG",
+    images: [
+      "/images/listings/IMG_9820.PNG",
+      "/images/listings/IMG_9819.PNG",
+      "/images/listings/IMG_9818.PNG",
+    ],
+    location: "Raia & Rachol, South Goa",
   },
   {
     id: "arambol-mud-bath-trek",
@@ -88,6 +127,14 @@ export const SERVICE_LISTINGS: ServiceListing[] = [
     groupLabel: "Up to 5 members",
     additionalMemberPrice: 750,
     image: "/images/listings/IMG_9822.PNG",
+    images: [
+      "/images/listings/IMG_9822.PNG",
+      "/images/listings/IMG_9823.PNG",
+      "/images/listings/IMG_9824.PNG",
+      "/images/listings/IMG_9825.PNG",
+      "/images/listings/IMG_9826.PNG",
+    ],
+    location: "Arambol, North Goa",
   },
   {
     id: "floating-stone-trek-cabo-de-rama",
@@ -99,7 +146,11 @@ export const SERVICE_LISTINGS: ServiceListing[] = [
     priceUnit: "per person",
     groupLabel: "Per head • Minimum 4-5 members group",
     image: "/images/listings/IMG_9933.PNG",
-    images: ["/images/listings/IMG_9933.PNG", "/images/listings/IMG_9932.PNG"],
+    images: [
+      "/images/listings/IMG_9933.PNG",
+      "/images/listings/IMG_9932.PNG",
+      "/images/listings/IMG_9790.PNG",
+    ],
     location: "Cabo de Rama, South Goa",
   },
 

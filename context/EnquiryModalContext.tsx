@@ -1,6 +1,7 @@
 "use client";
 
 import React, { createContext, useContext, useState, ReactNode } from "react";
+import { getWhatsAppUrl } from "@/lib/config";
 
 interface EnquiryModalContextType {
   isOpen: boolean;
@@ -16,8 +17,15 @@ export function EnquiryModalProvider({ children }: { children: ReactNode }) {
   const [selectedService, setSelectedService] = useState<string>("Offbeat Trekking Expeditions");
 
   const openEnquiryModal = (serviceName?: string) => {
-    setSelectedService(serviceName || "Offbeat Trekking Expeditions");
-    setIsOpen(true);
+    const activity = serviceName || "General Adventure Enquiry";
+    setSelectedService(activity);
+    const url = getWhatsAppUrl(activity);
+    if (typeof window !== "undefined") {
+      const opened = window.open(url, "_blank", "noopener,noreferrer");
+      if (!opened || opened.closed || typeof opened.closed === "undefined") {
+        window.location.href = url;
+      }
+    }
   };
 
   const closeEnquiryModal = () => {

@@ -3,7 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Phone } from "lucide-react";
 import { useEnquiryModal } from "@/context/EnquiryModalContext";
 
 // Clean custom icons matching the reference image
@@ -115,16 +115,26 @@ export default function HeroSection() {
       {/* Main Hero Content (Left-aligned, vertically centered within viewport) */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full my-auto">
         <div className="max-w-2xl">
-          {/* Eyebrow Label */}
+          {/* Eyebrow Label & Quick Contact Badge */}
           <motion.div
             initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="mb-1.5"
+            className="mb-2 flex flex-wrap items-center gap-2.5"
           >
             <span className="text-[11px] sm:text-xs font-body font-semibold tracking-[0.26em] text-sand/90 uppercase">
               TREK ME @ GOA
             </span>
+            <span className="hidden sm:inline text-white/30">•</span>
+            <a
+              href="tel:+918379040418"
+              className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-black/40 hover:bg-black/60 border border-white/20 hover:border-sand/60 text-warm-ivory text-[11px] sm:text-xs font-medium backdrop-blur-md transition-all group"
+              aria-label="Direct Booking Call +91 83790 40418"
+            >
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+              <Phone className="w-3 h-3 text-sand group-hover:scale-110 transition-transform" />
+              <span>Direct Booking: <strong className="text-white font-bold tracking-wide">+91 83790 40418</strong></span>
+            </a>
           </motion.div>
 
           {/* Main Headline matching reference layout */}
@@ -173,6 +183,16 @@ export default function HeroSection() {
             >
               <span>Plan Your Trip</span>
             </button>
+
+            {/* Direct Call Pill Button */}
+            <a
+              href="tel:+918379040418"
+              className="inline-flex items-center gap-2 bg-black/40 hover:bg-black/60 border border-white/30 hover:border-white text-white font-body font-semibold text-xs sm:text-sm px-5 py-3 rounded-full backdrop-blur-md transition-all duration-200 transform hover:-translate-y-0.5 active:translate-y-0 shadow-lg group focus-visible:ring-2 focus-visible:ring-sand"
+              aria-label="Call +91 83790 40418"
+            >
+              <Phone className="w-3.5 h-3.5 text-sand group-hover:scale-110 transition-transform" />
+              <span>+91 83790 40418</span>
+            </a>
           </motion.div>
 
           {/* Three Feature Highlights Row: Treks & Trails | Hidden Beaches | Camping Spots */}

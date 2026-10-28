@@ -123,17 +123,17 @@ export default function CustomerGallery() {
           </motion.p>
         </div>
 
-        {/* 10-Photo 2-Row Grid matching reference layout */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3.5 sm:gap-4">
+        {/* 9-Photo 3x3 Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           {GALLERY_PHOTOS.map((photo, index) => (
             <motion.div
               key={photo.id}
               initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: (index % 5) * 0.05 }}
+              transition={{ duration: 0.4, delay: (index % 3) * 0.08 }}
               onClick={() => handleOpenLightbox(index)}
-              className="group relative h-44 sm:h-52 rounded-2xl overflow-hidden cursor-pointer border border-leaf-green/40 hover:border-adventure-orange/80 shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 focus-visible:ring-2 focus-visible:ring-adventure-orange bg-[#10291E]"
+              className="group relative h-56 sm:h-64 rounded-2xl overflow-hidden cursor-pointer border border-leaf-green/40 hover:border-adventure-orange/80 shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 focus-visible:ring-2 focus-visible:ring-adventure-orange bg-[#10291E]"
               tabIndex={0}
               role="button"
               aria-label={`View photo: ${photo.title}`}

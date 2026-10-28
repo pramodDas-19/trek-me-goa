@@ -63,7 +63,7 @@ export const SERVICE_LISTINGS: ServiceListing[] = [
     priceUnit: "per group",
     groupLabel: "Up to 5 members",
     additionalMemberPrice: 575,
-    image: "/images/listings/IMG_9804.PNG",
+    image: "/new/images copy.jpg",
   },
   {
     id: "raia-village-sightseeing",
@@ -98,8 +98,8 @@ export const SERVICE_LISTINGS: ServiceListing[] = [
     price: 850,
     priceUnit: "per person",
     groupLabel: "Per head • Minimum 4-5 members group",
-    image: "/images/listings/IMG_9932.PNG",
-    images: ["/images/listings/IMG_9932.PNG", "/images/listings/IMG_9933.PNG"],
+    image: "/images/listings/IMG_9933.PNG",
+    images: ["/images/listings/IMG_9933.PNG", "/images/listings/IMG_9932.PNG"],
     location: "Cabo de Rama, South Goa",
   },
 
@@ -226,7 +226,7 @@ export const SERVICE_LISTINGS: ServiceListing[] = [
     location: "Fort Aguada, Goa",
   },
 
-  // FARM PICNIC BOOKING — 1 LISTING
+  // FARM PICNIC BOOKING — 2 LISTINGS
   {
     id: "horse-farm-picnic-sanguem",
     serviceId: "farm-picnic",
@@ -240,11 +240,9 @@ export const SERVICE_LISTINGS: ServiceListing[] = [
     images: ["/images/listings/IMG_9906.PNG"],
     location: "Sanguem, South Goa",
   },
-
-  // WATERSPORTS & SURFING — 3 LISTINGS
   {
     id: "natural-spring-pool-water-relaxation",
-    serviceId: "watersports-surfing",
+    serviceId: "farm-picnic",
     title: "Natural Spring Pool & Water Relaxation",
     description:
       "Relax in pristine freshwater spring pools nestled amidst lush tropical greenery, coconut palms, and peaceful waterside cabanas. Includes pool access and relaxation zones.",
@@ -255,6 +253,8 @@ export const SERVICE_LISTINGS: ServiceListing[] = [
     images: ["/images/listings/IMG_9908.PNG"],
     location: "Goa, India",
   },
+
+  // WATERSPORTS & SURFING — 2 LISTINGS
   {
     id: "5-in-1-beach-watersports-candolim",
     serviceId: "watersports-surfing",

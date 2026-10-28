@@ -287,7 +287,7 @@ function EnquiryForm({
             </optgroup>
 
             {/* WATERSPORTS & SURFING */}
-            <optgroup label="🏄 Watersports & Surfing Packages (3 Packages)">
+            <optgroup label="🏄 Watersports & Surfing Packages (2 Packages)">
               {WATERSPORTS_LISTINGS.map((l) => (
                 <option key={l.id} value={l.title}>
                   {l.title} {l.price ? `(₹${l.price.toLocaleString("en-IN")}${l.priceUnit ? `/${l.priceUnit.replace("per ", "")}` : ""})` : ""}
@@ -323,7 +323,7 @@ function EnquiryForm({
             </optgroup>
 
             {/* FARM PICNIC */}
-            <optgroup label="🐎 Farm Picnics & Stays">
+            <optgroup label="🐎 Farm Picnics & Stays (2 Experiences)">
               {FARM_LISTINGS.map((l) => (
                 <option key={l.id} value={l.title}>
                   {l.title} {l.price ? `(₹${l.price.toLocaleString("en-IN")}${l.priceUnit ? `/${l.priceUnit.replace("per ", "")}` : ""})` : ""}

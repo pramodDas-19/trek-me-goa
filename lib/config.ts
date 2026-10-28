@@ -14,9 +14,8 @@ export interface WhatsAppConfig {
 }
 
 export const WHATSAPP_CONFIG: WhatsAppConfig = {
-  // CLIENT TODO: Replace with verified Trek Me @ Goa business WhatsApp number
-  phoneNumber: "919876543210", 
-  isConfigured: false, // Flag indicating temporary placeholder state
+  phoneNumber: "918379040418", 
+  isConfigured: true,
   defaultMessage: "Hi Trek Me @ Goa! I'd like to plan an adventure trip. Could you please share the available dates and details?",
 };
 

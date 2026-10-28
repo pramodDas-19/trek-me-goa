@@ -36,23 +36,23 @@ export default async function ServiceListingPage({
   );
 
   return (
-    <main className="min-h-screen bg-[#F8F7F2] text-[#173B2B]">
+    <main className="min-h-screen bg-[#F8F7F2] text-forest-green">
       {/* HERO */}
-      <section className="relative overflow-hidden bg-[#173B2B]">
-        <div className="absolute -right-20 -top-24 h-72 w-72 rounded-full bg-[#F36B12]/10 blur-3xl" />
+      <section className="relative overflow-hidden bg-forest-green">
+        <div className="absolute -right-20 -top-24 h-72 w-72 rounded-full bg-adventure-orange/10 blur-3xl" />
         <div className="absolute -bottom-32 left-1/4 h-64 w-64 rounded-full bg-white/5 blur-3xl" />
 
         <div className="relative mx-auto max-w-7xl px-5 pb-14 pt-8 sm:px-8 sm:pb-20 sm:pt-10">
           <Link
             href="/"
-            className="inline-flex items-center gap-2 rounded-full border border-white/20 px-4 py-2 text-sm font-medium text-white/80 transition hover:border-[#F36B12] hover:text-white"
+            className="inline-flex items-center gap-2 rounded-full border border-white/20 px-4 py-2 text-sm font-medium text-white/80 transition hover:border-adventure-orange hover:text-white"
           >
             <ArrowLeft className="h-4 w-4" />
             Back to Home
           </Link>
 
           <div className="mt-10 max-w-3xl sm:mt-14">
-            <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-[#F36B12]/40 bg-[#F36B12]/10 px-4 py-2 text-xs font-bold uppercase tracking-[0.18em] text-[#FFAB70]">
+            <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-adventure-orange/40 bg-adventure-orange/10 px-4 py-2 text-xs font-bold uppercase tracking-[0.18em] text-[#FFAB70]">
               <MapPin className="h-3.5 w-3.5" />
               Discover Goa
             </div>
@@ -92,7 +92,7 @@ export default async function ServiceListingPage({
       <section className="mx-auto max-w-7xl px-5 py-12 sm:px-8 sm:py-16">
         <div className="mb-9 flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
           <div>
-            <p className="text-xs font-extrabold uppercase tracking-[0.2em] text-[#F36B12]">
+            <p className="text-xs font-extrabold uppercase tracking-[0.2em] text-adventure-orange">
               Find Your Experience
             </p>
 
@@ -100,13 +100,13 @@ export default async function ServiceListingPage({
               Explore Our Experiences
             </h2>
 
-            <p className="mt-3 max-w-xl text-sm leading-6 text-[#242A25]/65 sm:text-base">
+            <p className="mt-3 max-w-xl text-sm leading-6 text-charcoal/65 sm:text-base">
               Find the experience that suits your trip and contact our team
               for booking enquiries.
             </p>
           </div>
 
-          <span className="w-fit rounded-full border border-[#E8E3D8] bg-white px-4 py-2 text-sm font-semibold text-[#173B2B]">
+          <span className="w-fit rounded-full border border-sand bg-white px-4 py-2 text-sm font-semibold text-forest-green">
             {listings.length}{" "}
             {listings.length === 1 ? "experience" : "experiences"}
           </span>
@@ -117,7 +117,7 @@ export default async function ServiceListingPage({
             {listings.map((listing) => (
               <article
                 key={listing.id}
-                className="group flex min-w-0 flex-col overflow-hidden rounded-2xl border border-[#E8E3D8] bg-white shadow-[0_5px_25px_rgba(23,59,43,0.05)] transition duration-300 hover:-translate-y-1 hover:border-[#D7C8B6] hover:shadow-[0_18px_40px_rgba(23,59,43,0.12)]"
+                className="group flex min-w-0 flex-col overflow-hidden rounded-2xl border border-sand bg-white shadow-[0_5px_25px_rgba(23,59,43,0.05)] transition duration-300 hover:-translate-y-1 hover:border-[#D7C8B6] hover:shadow-[0_18px_40px_rgba(23,59,43,0.12)]"
               >
                 {/* IMAGE / CAROUSEL */}
                 <ListingCardMedia
@@ -129,29 +129,29 @@ export default async function ServiceListingPage({
 
                 {/* DETAILS */}
                 <div className="flex flex-1 flex-col p-5 sm:p-6">
-                  <h3 className="text-xl font-extrabold leading-snug tracking-tight text-[#173B2B] transition-colors group-hover:text-[#D95B0B]">
+                  <h3 className="text-xl font-extrabold leading-snug tracking-tight text-forest-green transition-colors group-hover:text-[#D95B0B]">
                     {listing.title}
                   </h3>
 
-                  <p className="mt-3 flex-1 text-sm leading-6 text-[#242A25]/70">
+                  <p className="mt-3 flex-1 text-sm leading-6 text-charcoal/70">
                     {listing.description}
                   </p>
 
                   {/* PRICE */}
-                  <div className="mt-5 rounded-xl border border-[#E8E3D8] bg-[#F8F7F2] p-4">
+                  <div className="mt-5 rounded-xl border border-sand bg-[#F8F7F2] p-4">
                     {listing.price !== undefined ? (
                       <>
-                        <p className="text-[11px] font-bold uppercase tracking-[0.15em] text-[#242A25]/55">
+                        <p className="text-[11px] font-bold uppercase tracking-[0.15em] text-charcoal/55">
                           Starting price
                         </p>
 
                         <div className="mt-1 flex flex-wrap items-baseline gap-1.5">
-                          <span className="text-3xl font-black tracking-tight text-[#173B2B]">
+                          <span className="text-3xl font-black tracking-tight text-forest-green">
                             ₹{listing.price.toLocaleString("en-IN")}
                           </span>
 
                           {listing.priceUnit && (
-                            <span className="text-sm font-medium text-[#242A25]/60">
+                            <span className="text-sm font-medium text-charcoal/60">
                               / {listing.priceUnit === "per person" ? "person" : "group"}
                             </span>
                           )}
@@ -159,10 +159,10 @@ export default async function ServiceListingPage({
                       </>
                     ) : (
                       <div>
-                        <p className="text-[11px] font-bold uppercase tracking-[0.15em] text-[#F36B12]">
+                        <p className="text-[11px] font-bold uppercase tracking-[0.15em] text-adventure-orange">
                           Package Enquiry
                         </p>
-                        <p className="mt-1 text-2xl font-black text-[#173B2B]">
+                        <p className="mt-1 text-2xl font-black text-forest-green">
                           Price on Request
                         </p>
                       </div>
@@ -170,17 +170,17 @@ export default async function ServiceListingPage({
 
                     {/* Pricing Tiers / Options if available */}
                     {listing.pricingOptions && listing.pricingOptions.length > 0 && (
-                      <div className="mt-3 flex flex-col gap-2 border-t border-[#E8E3D8] pt-2.5">
+                      <div className="mt-3 flex flex-col gap-2 border-t border-sand pt-2.5">
                         {listing.pricingOptions.map((opt, i) => (
                           <div
                             key={i}
-                            className="flex items-center justify-between rounded-lg bg-white/70 px-3 py-1.5 text-xs font-semibold text-[#173B2B] border border-[#E8E3D8]/80"
+                            className="flex items-center justify-between rounded-lg bg-white/70 px-3 py-1.5 text-xs font-semibold text-forest-green border border-sand/80"
                           >
-                            <span className="text-[#242A25]/80 font-medium">
+                            <span className="text-charcoal/80 font-medium">
                               {opt.label}
                               {opt.unit ? ` (${opt.unit})` : ""}
                             </span>
-                            <span className="font-extrabold text-[#F36B12]">
+                            <span className="font-extrabold text-adventure-orange">
                               ₹{opt.price.toLocaleString("en-IN")}
                             </span>
                           </div>
@@ -188,15 +188,15 @@ export default async function ServiceListingPage({
                       </div>
                     )}
 
-                    <div className="mt-3 flex items-start gap-2 border-t border-[#E8E3D8] pt-3">
-                      <Users className="mt-0.5 h-4 w-4 shrink-0 text-[#F36B12]" />
+                    <div className="mt-3 flex items-start gap-2 border-t border-sand pt-3">
+                      <Users className="mt-0.5 h-4 w-4 shrink-0 text-adventure-orange" />
                       <div>
-                        <p className="text-sm font-semibold text-[#173B2B]">
+                        <p className="text-sm font-semibold text-forest-green">
                           {listing.groupLabel}
                         </p>
 
                         {listing.additionalMemberPrice !== undefined && (
-                          <p className="mt-1 text-xs leading-5 text-[#242A25]/65">
+                          <p className="mt-1 text-xs leading-5 text-charcoal/65">
                             Additional member: ₹
                             {listing.additionalMemberPrice.toLocaleString("en-IN")}{" "}
                             per person
@@ -209,7 +209,7 @@ export default async function ServiceListingPage({
                   {/* ENQUIRY */}
                   <ListingEnquiryButton
                     title={listing.title}
-                    className="mt-5 inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-xl bg-[#F36B12] px-4 py-3 text-sm font-bold text-white shadow-sm transition hover:bg-[#173B2B] focus:outline-none focus:ring-2 focus:ring-[#F36B12] focus:ring-offset-2"
+                    className="mt-5 inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-xl bg-adventure-orange px-4 py-3 text-sm font-bold text-white shadow-sm transition hover:bg-forest-green focus:outline-none focus:ring-2 focus:ring-adventure-orange focus:ring-offset-2"
                   >
                     <MessageCircle className="h-4 w-4" />
                     {category.tag === "Trek" ? "Enquire About This Trek" : "Book / Enquire Now"}
@@ -220,23 +220,23 @@ export default async function ServiceListingPage({
             ))}
           </div>
         ) : (
-          <div className="rounded-3xl border border-[#E8E3D8] bg-white px-6 py-16 text-center shadow-sm">
-            <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-[#173B2B]/5">
-              <MapPin className="h-6 w-6 text-[#F36B12]" />
+          <div className="rounded-3xl border border-sand bg-white px-6 py-16 text-center shadow-sm">
+            <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-forest-green/5">
+              <MapPin className="h-6 w-6 text-adventure-orange" />
             </div>
 
             <h3 className="mt-5 text-2xl font-extrabold">
               Details Coming Soon
             </h3>
 
-            <p className="mx-auto mt-3 max-w-md text-sm leading-6 text-[#242A25]/65">
+            <p className="mx-auto mt-3 max-w-md text-sm leading-6 text-charcoal/65">
               We are preparing the experiences for this category. Contact
               our team for further information.
             </p>
 
             <ListingEnquiryButton
               title={category.title}
-              className="mt-6 inline-flex items-center justify-center gap-2 rounded-xl bg-[#F36B12] px-6 py-3 text-sm font-bold text-white transition hover:bg-[#173B2B]"
+              className="mt-6 inline-flex items-center justify-center gap-2 rounded-xl bg-adventure-orange px-6 py-3 text-sm font-bold text-white transition hover:bg-forest-green"
             >
               <MessageCircle className="h-4 w-4" />
               Enquire About This Service
@@ -247,8 +247,8 @@ export default async function ServiceListingPage({
 
       {/* BOTTOM CTA */}
       <section className="px-5 pb-14 sm:px-8 sm:pb-20">
-        <div className="relative mx-auto max-w-7xl overflow-hidden rounded-3xl bg-[#173B2B] px-6 py-10 text-center sm:px-12 sm:py-14">
-          <div className="absolute -right-12 -top-20 h-56 w-56 rounded-full bg-[#F36B12]/15 blur-3xl" />
+        <div className="relative mx-auto max-w-7xl overflow-hidden rounded-3xl bg-forest-green px-6 py-10 text-center sm:px-12 sm:py-14">
+          <div className="absolute -right-12 -top-20 h-56 w-56 rounded-full bg-adventure-orange/15 blur-3xl" />
           <div className="absolute -bottom-24 -left-12 h-56 w-56 rounded-full bg-white/5 blur-3xl" />
 
           <div className="relative">
@@ -267,7 +267,7 @@ export default async function ServiceListingPage({
 
             <ListingEnquiryButton
               title={category.title}
-              className="mt-7 inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-[#F36B12] px-7 py-3 text-sm font-bold text-white transition hover:bg-white hover:text-[#173B2B]"
+              className="mt-7 inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-adventure-orange px-7 py-3 text-sm font-bold text-white transition hover:bg-white hover:text-forest-green"
             >
               <MessageCircle className="h-4 w-4" />
               Enquire Now

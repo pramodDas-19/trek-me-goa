@@ -33,7 +33,7 @@ export default function WhatsAppFloat() {
       <button
         type="button"
         onClick={() => openEnquiryModal("Quick Goa Trek Enquiry")}
-        className="flex items-center justify-center w-13 h-13 sm:w-14 sm:h-14 rounded-full bg-[#F36B12] hover:bg-[#dc5e0c] text-white shadow-2xl transition-all duration-300 transform hover:scale-110 active:scale-95 focus-visible:ring-4 focus-visible:ring-white border-2 border-white/20 cursor-pointer"
+        className="flex items-center justify-center w-13 h-13 sm:w-14 sm:h-14 rounded-full bg-adventure-orange hover:bg-adventure-orange-hover text-white shadow-2xl transition-all duration-300 transform hover:scale-110 active:scale-95 focus-visible:ring-4 focus-visible:ring-white border-2 border-white/20 cursor-pointer"
         aria-label="Instant WhatsApp Enquiry with Trek Me @ Goa"
       >
         <MessageCircle className="w-6 h-6 sm:w-7 sm:h-7 fill-white text-transparent" />

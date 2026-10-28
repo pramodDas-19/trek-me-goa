@@ -115,7 +115,7 @@ export default function ExperiencesSection() {
   return (
     <section
       id="experiences"
-      className="relative bg-[#173B2B] text-white pt-16 pb-20 overflow-hidden"
+      className="relative bg-forest-green text-white pt-16 pb-20 overflow-hidden"
       aria-label="Authentic Goan Local Experiences"
     >
       {/* Top Ripped / Brush Edge Divider matching reference image */}
@@ -123,7 +123,7 @@ export default function ExperiencesSection() {
         <svg
           viewBox="0 0 1440 38"
           preserveAspectRatio="none"
-          className="w-full h-7 sm:h-10 text-[#F8F6F0] fill-current"
+          className="w-full h-7 sm:h-10 text-warm-ivory fill-current"
           aria-hidden="true"
         >
           <path d="M0,0 L1440,0 L1440,24 C1390,12 1340,32 1290,18 C1240,6 1190,28 1140,16 C1090,4 1040,26 990,14 C940,3 890,26 840,15 C790,5 740,28 690,17 C640,6 590,27 540,16 C490,5 440,27 390,16 C340,5 290,27 240,15 C190,5 140,28 90,16 C40,5 15,22 0,16 Z" />
@@ -139,7 +139,7 @@ export default function ExperiencesSection() {
               initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-xs sm:text-sm font-body font-semibold text-[#E8E3D8]/85 uppercase tracking-[0.22em] block mb-2"
+              className="text-xs sm:text-sm font-body font-semibold text-sand/85 uppercase tracking-[0.22em] block mb-2"
             >
               LOCAL EXPERIENCES
             </motion.span>
@@ -152,12 +152,12 @@ export default function ExperiencesSection() {
               className="relative inline-block"
             >
               <h2 className="font-heading font-extrabold text-4xl sm:text-5xl lg:text-6xl text-white tracking-tight uppercase leading-[0.95]">
-                AUTHENTIC <span className="text-[#F36B12]">GOAN</span> EXPERIENCES
+                AUTHENTIC <span className="text-adventure-orange">GOAN</span> EXPERIENCES
               </h2>
 
               {/* Orange brush underline stroke under "GOAN" */}
               <svg
-                className="w-28 sm:w-36 h-3 text-[#F36B12] mt-1 ml-40 sm:ml-52"
+                className="w-28 sm:w-36 h-3 text-adventure-orange mt-1 ml-40 sm:ml-52"
                 viewBox="0 0 150 12"
                 fill="currentColor"
                 aria-hidden="true"
@@ -173,7 +173,7 @@ export default function ExperiencesSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="text-sm sm:text-base text-[#E8E3D8]/85 font-body max-w-md leading-relaxed lg:text-right"
+            className="text-sm sm:text-base text-sand/85 font-body max-w-md leading-relaxed lg:text-right"
           >
             More than just treks — experience the real Goa with locals, food, culture and nature.
           </motion.p>
@@ -190,7 +190,7 @@ export default function ExperiencesSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: idx * 0.1 }}
-                className="group flex flex-col justify-between bg-[#0E291C] rounded-2xl sm:rounded-3xl overflow-hidden border border-[#49634B]/40 hover:border-[#F36B12]/60 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1.5 focus-within:ring-2 focus-within:ring-[#F36B12]"
+                className="group flex flex-col justify-between bg-[#0E291C] rounded-2xl sm:rounded-3xl overflow-hidden border border-leaf-green/40 hover:border-adventure-orange/60 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1.5 focus-within:ring-2 focus-within:ring-adventure-orange"
               >
                 {/* Card Image */}
                 <div className="relative h-60 sm:h-64 lg:h-56 w-full overflow-hidden bg-[#10291E]">
@@ -201,12 +201,12 @@ export default function ExperiencesSection() {
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 20vw"
                     className="object-cover object-center group-hover:scale-108 transition-transform duration-500 ease-out"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0E291C] via-transparent to-black/20" />
+                  <div className="absolute inset-0 bg-linear-to-t from-[#0E291C] via-transparent to-black/20" />
                 </div>
 
                 {/* Floating Circular Icon Badge Overlapping Image Bottom */}
                 <div className="relative px-5">
-                  <div className="w-10 h-10 -mt-5 rounded-full bg-[#173B2B] border-2 border-[#0E291C] flex items-center justify-center text-white shadow-md z-10 group-hover:bg-[#F36B12] group-hover:text-white transition-colors duration-300">
+                  <div className="w-10 h-10 -mt-5 rounded-full bg-forest-green border-2 border-[#0E291C] flex items-center justify-center text-white shadow-md z-10 group-hover:bg-adventure-orange group-hover:text-white transition-colors duration-300">
                     <IconComponent className="w-5 h-5 text-white" />
                   </div>
                 </div>
@@ -214,11 +214,11 @@ export default function ExperiencesSection() {
                 {/* Card Content & Circular Arrow CTA */}
                 <div className="p-5 pt-3 flex flex-col flex-1 justify-between">
                   <div>
-                    <h3 className="font-heading font-extrabold text-xl sm:text-2xl text-white group-hover:text-[#F36B12] transition-colors leading-tight">
+                    <h3 className="font-heading font-extrabold text-xl sm:text-2xl text-white group-hover:text-adventure-orange transition-colors leading-tight">
                       {exp.title}
                     </h3>
 
-                    <p className="mt-2 text-xs sm:text-sm font-body text-[#E8E3D8]/80 leading-relaxed line-clamp-3">
+                    <p className="mt-2 text-xs sm:text-sm font-body text-sand/80 leading-relaxed line-clamp-3">
                       {exp.description}
                     </p>
                   </div>
@@ -228,7 +228,7 @@ export default function ExperiencesSection() {
                     <button
                       type="button"
                       onClick={() => openEnquiryModal(exp.title)}
-                      className="w-9 h-9 rounded-full bg-[#F36B12] hover:bg-[#dc5e0c] text-white flex items-center justify-center shadow-md hover:scale-110 active:scale-95 transition-all focus-visible:ring-2 focus-visible:ring-white"
+                      className="w-9 h-9 rounded-full bg-adventure-orange hover:bg-adventure-orange-hover text-white flex items-center justify-center shadow-md hover:scale-110 active:scale-95 transition-all focus-visible:ring-2 focus-visible:ring-white"
                       aria-label={`Enquire about ${exp.title}`}
                     >
                       <ArrowRight className="w-4 h-4 stroke-[2.5]" />
@@ -246,7 +246,7 @@ export default function ExperiencesSection() {
         <svg
           viewBox="0 0 1440 38"
           preserveAspectRatio="none"
-          className="w-full h-7 sm:h-10 text-[#F8F6F0] fill-current"
+          className="w-full h-7 sm:h-10 text-warm-ivory fill-current"
           aria-hidden="true"
         >
           <path d="M0,38 L1440,38 L1440,14 C1390,26 1340,6 1290,20 C1240,32 1190,10 1140,22 C1090,34 1040,12 990,24 C940,35 890,12 840,23 C790,33 740,10 690,21 C640,32 590,11 540,22 C490,33 440,11 390,22 C340,33 290,11 240,23 C190,33 140,10 90,22 C40,33 15,16 0,22 Z" />

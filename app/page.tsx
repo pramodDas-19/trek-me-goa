@@ -11,7 +11,7 @@ import WhatsAppFloat from "@/components/WhatsAppFloat";
 
 export default function Home() {
   return (
-    <div className="relative min-h-screen flex flex-col bg-[#F8F6F0] text-[#242A25]">
+    <div className="relative min-h-screen flex flex-col bg-warm-ivory text-charcoal">
       {/* Navigation */}
       <Navbar />
 

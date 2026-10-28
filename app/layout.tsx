@@ -79,7 +79,7 @@ export default function RootLayout({
       lang="en"
       className={`${barlowCondensed.variable} ${dmSans.variable} ${caveat.variable} ${dancingScript.variable} ${satisfy.variable} scroll-smooth antialiased`}
     >
-      <body className="min-h-screen flex flex-col bg-[#F8F6F0] text-[#242A25] selection:bg-[#F36B12] selection:text-white">
+      <body className="min-h-screen flex flex-col bg-warm-ivory text-charcoal selection:bg-adventure-orange selection:text-white">
         <Providers>{children}</Providers>
       </body>
     </html>

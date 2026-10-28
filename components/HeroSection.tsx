@@ -88,7 +88,7 @@ export default function HeroSection() {
   return (
     <section
       id="hero"
-      className="relative h-[100dvh] max-h-[100dvh] flex flex-col justify-between overflow-hidden bg-[#10291E] text-white pt-20 sm:pt-24 pb-4 sm:pb-6"
+      className="relative h-dvh max-h-dvh flex flex-col justify-between overflow-hidden bg-[#10291E] text-white pt-20 sm:pt-24 pb-4 sm:pb-6"
       aria-label="Trek Me @ Goa Hero Section"
     >
       {/* Background Image: Lone Hiker Beside Jungle Waterfall */}
@@ -108,8 +108,8 @@ export default function HeroSection() {
         />
 
         {/* Soft dark vignette on the left to ensure crisp text contrast matching reference */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/40 to-transparent w-full md:w-[65%]" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/30" />
+        <div className="absolute inset-0 bg-linear-to-r from-black/85 via-black/40 to-transparent w-full md:w-[65%]" />
+        <div className="absolute inset-0 bg-linear-to-t from-black/70 via-transparent to-black/30" />
       </motion.div>
 
       {/* Main Hero Content (Left-aligned, vertically centered within viewport) */}
@@ -122,7 +122,7 @@ export default function HeroSection() {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="mb-1.5"
           >
-            <span className="text-[11px] sm:text-xs font-body font-semibold tracking-[0.26em] text-[#E8E3D8]/90 uppercase">
+            <span className="text-[11px] sm:text-xs font-body font-semibold tracking-[0.26em] text-sand/90 uppercase">
               TREK ME @ GOA
             </span>
           </motion.div>
@@ -135,7 +135,7 @@ export default function HeroSection() {
             className="font-heading font-extrabold text-4xl sm:text-5xl md:text-6xl lg:text-[4.4rem] tracking-tight leading-[0.92] uppercase"
           >
             <span className="block text-white">GO BEYOND</span>
-            <span className="block text-[#F36B12] drop-shadow-md">THE USUAL GOA.</span>
+            <span className="block text-adventure-orange drop-shadow-md">THE USUAL GOA.</span>
           </motion.h1>
 
           {/* Supporting Paragraph */}
@@ -143,7 +143,7 @@ export default function HeroSection() {
             initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.35 }}
-            className="mt-3 sm:mt-4 text-sm sm:text-base text-[#F8F6F0]/90 font-body max-w-lg leading-relaxed"
+            className="mt-3 sm:mt-4 text-sm sm:text-base text-warm-ivory/90 font-body max-w-lg leading-relaxed"
           >
             Discover hidden trails, wild waterfalls and authentic local experiences with Trek Me @ Goa.
           </motion.p>
@@ -159,7 +159,7 @@ export default function HeroSection() {
             <a
               href="#services"
               onClick={handleScrollToServices}
-              className="inline-flex items-center gap-2 bg-[#F36B12] hover:bg-[#dc5e0c] text-white font-body font-bold text-xs sm:text-sm px-6 py-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-200 transform hover:-translate-y-0.5 active:translate-y-0 focus-visible:ring-2 focus-visible:ring-white group"
+              className="inline-flex items-center gap-2 bg-adventure-orange hover:bg-adventure-orange-hover text-white font-body font-bold text-xs sm:text-sm px-6 py-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-200 transform hover:-translate-y-0.5 active:translate-y-0 focus-visible:ring-2 focus-visible:ring-white group"
             >
               <span>Explore Adventures</span>
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -169,7 +169,7 @@ export default function HeroSection() {
             <button
               type="button"
               onClick={() => openEnquiryModal("General Adventure Enquiry")}
-              className="inline-flex items-center justify-center border border-white/50 hover:border-white text-white hover:bg-white/10 font-body font-semibold text-xs sm:text-sm px-6 py-3 rounded-full backdrop-blur-sm transition-all duration-200 transform hover:-translate-y-0.5 active:translate-y-0 focus-visible:ring-2 focus-visible:ring-[#F36B12]"
+              className="inline-flex items-center justify-center border border-white/50 hover:border-white text-white hover:bg-white/10 font-body font-semibold text-xs sm:text-sm px-6 py-3 rounded-full backdrop-blur-sm transition-all duration-200 transform hover:-translate-y-0.5 active:translate-y-0 focus-visible:ring-2 focus-visible:ring-adventure-orange"
             >
               <span>Plan Your Trip</span>
             </button>
@@ -221,7 +221,7 @@ export default function HeroSection() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.7, duration: 0.6 }}
-          className="flex items-center gap-2 text-white/80 hover:text-white transition-colors group focus-visible:ring-2 focus-visible:ring-[#F36B12] rounded-full p-1"
+          className="flex items-center gap-2 text-white/80 hover:text-white transition-colors group focus-visible:ring-2 focus-visible:ring-adventure-orange rounded-full p-1"
           aria-label="Scroll down to services"
         >
           {/* Oval mouse capsule icon */}
@@ -229,7 +229,7 @@ export default function HeroSection() {
             <motion.div
               animate={shouldReduceMotion ? {} : { y: [0, 6, 0] }}
               transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
-              className="w-1 h-1.5 bg-white group-hover:bg-[#F36B12] rounded-full transition-colors"
+              className="w-1 h-1.5 bg-white group-hover:bg-adventure-orange rounded-full transition-colors"
             />
           </div>
           <span className="text-[11px] font-body tracking-wider text-white/80 group-hover:text-white">
@@ -252,7 +252,7 @@ export default function HeroSection() {
           </div>
           {/* Orange brush underline stroke */}
           <svg
-            className="w-24 sm:w-28 h-2.5 text-[#F36B12] mt-0.5"
+            className="w-24 sm:w-28 h-2.5 text-adventure-orange mt-0.5"
             viewBox="0 0 150 12"
             fill="currentColor"
             aria-hidden="true"

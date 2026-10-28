@@ -10,7 +10,7 @@ import { CUSTOMER_REVIEWS } from "@/lib/data";
 function PalmLeafLeft() {
   return (
     <svg
-      className="w-28 sm:w-44 h-auto text-[#49634B]/20 pointer-events-none select-none"
+      className="w-28 sm:w-44 h-auto text-leaf-green/20 pointer-events-none select-none"
       viewBox="0 0 160 220"
       fill="currentColor"
       aria-hidden="true"
@@ -26,7 +26,7 @@ function PalmLeafLeft() {
 function PalmLeafRight() {
   return (
     <svg
-      className="w-28 sm:w-44 h-auto text-[#49634B]/20 pointer-events-none select-none rotate-180"
+      className="w-28 sm:w-44 h-auto text-leaf-green/20 pointer-events-none select-none rotate-180"
       viewBox="0 0 160 220"
       fill="currentColor"
       aria-hidden="true"
@@ -64,7 +64,7 @@ export default function ReviewsSection() {
   return (
     <section
       id="reviews"
-      className="py-20 md:py-28 bg-[#F8F6F0] relative overflow-hidden"
+      className="py-20 md:py-28 bg-warm-ivory relative overflow-hidden"
       aria-label="Customer Reviews & Guest Experiences"
     >
       {/* Decorative Palm Leaves on Left & Right Margins */}
@@ -84,7 +84,7 @@ export default function ReviewsSection() {
               initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-xs sm:text-sm font-body font-semibold text-[#576259] uppercase tracking-[0.2em] block mb-2"
+              className="text-xs sm:text-sm font-body font-semibold text-charcoal-muted uppercase tracking-[0.2em] block mb-2"
             >
               TRAVELLERS LOVE US
             </motion.span>
@@ -96,13 +96,13 @@ export default function ReviewsSection() {
               transition={{ delay: 0.1 }}
               className="relative inline-block"
             >
-              <h2 className="font-heading font-extrabold text-4xl sm:text-5xl lg:text-6xl text-[#173B2B] tracking-tight uppercase leading-[0.95]">
-                REAL STORIES, <span className="text-[#F36B12]">REAL</span> ADVENTURES
+              <h2 className="font-heading font-extrabold text-4xl sm:text-5xl lg:text-6xl text-forest-green tracking-tight uppercase leading-[0.95]">
+                REAL STORIES, <span className="text-adventure-orange">REAL</span> ADVENTURES
               </h2>
 
               {/* Orange brush underline stroke under "REAL" */}
               <svg
-                className="w-24 sm:w-28 h-2.5 text-[#F36B12] mt-1 ml-56 sm:ml-72"
+                className="w-24 sm:w-28 h-2.5 text-adventure-orange mt-1 ml-56 sm:ml-72"
                 viewBox="0 0 150 12"
                 fill="currentColor"
                 aria-hidden="true"
@@ -118,7 +118,7 @@ export default function ReviewsSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="text-sm sm:text-base text-[#242A25]/80 font-body max-w-md leading-relaxed lg:text-right"
+            className="text-sm sm:text-base text-charcoal/80 font-body max-w-md leading-relaxed lg:text-right"
           >
             Here&apos;s what our travellers have to say about their experiences with Trek Me @ Goa.
           </motion.p>
@@ -130,7 +130,7 @@ export default function ReviewsSection() {
           <button
             type="button"
             onClick={handlePrev}
-            className="absolute left-0 sm:-left-6 z-20 w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white/95 border border-[#242A25]/30 hover:border-[#173B2B] hover:bg-[#173B2B] text-[#173B2B] hover:text-white flex items-center justify-center shadow-md transition-all duration-200 focus-visible:ring-2 focus-visible:ring-[#F36B12] active:scale-95"
+            className="absolute left-0 sm:-left-6 z-20 w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white/95 border border-charcoal/30 hover:border-forest-green hover:bg-forest-green text-forest-green hover:text-white flex items-center justify-center shadow-md transition-all duration-200 focus-visible:ring-2 focus-visible:ring-adventure-orange active:scale-95"
             aria-label="Previous review"
           >
             <ChevronLeft className="w-5 h-5" />
@@ -147,13 +147,13 @@ export default function ReviewsSection() {
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: -25 }}
                   transition={{ duration: 0.25 }}
-                  className="bg-white rounded-2xl p-5 sm:p-6 border border-[#E8E3D8] shadow-sm flex flex-col justify-between min-h-[250px]"
+                  className="bg-white rounded-2xl p-5 sm:p-6 border border-sand shadow-sm flex flex-col justify-between min-h-62.5"
                 >
                   <div>
                     {/* Top Row: Avatar, Name, Stars, and Quote Icon */}
-                    <div className="flex items-center justify-between pb-3.5 border-b border-[#E8E3D8]/60">
+                    <div className="flex items-center justify-between pb-3.5 border-b border-sand/60">
                       <div className="flex items-center gap-3">
-                        <div className="relative w-11 h-11 rounded-full overflow-hidden border-2 border-[#E8E3D8] shrink-0 bg-[#E8E3D8]/50">
+                        <div className="relative w-11 h-11 rounded-full overflow-hidden border-2 border-sand shrink-0 bg-sand/50">
                           <Image
                             src={CUSTOMER_REVIEWS[startIndex].avatar}
                             alt={CUSTOMER_REVIEWS[startIndex].name}
@@ -164,7 +164,7 @@ export default function ReviewsSection() {
                         </div>
 
                         <div>
-                          <h3 className="font-heading font-extrabold text-lg text-[#173B2B] leading-tight">
+                          <h3 className="font-heading font-extrabold text-lg text-forest-green leading-tight">
                             {CUSTOMER_REVIEWS[startIndex].name}
                           </h3>
 
@@ -173,28 +173,28 @@ export default function ReviewsSection() {
                             {[...Array(CUSTOMER_REVIEWS[startIndex].rating)].map((_, s) => (
                               <Star
                                 key={s}
-                                className="w-3.5 h-3.5 fill-[#F36B12] text-[#F36B12]"
+                                className="w-3.5 h-3.5 fill-adventure-orange text-adventure-orange"
                               />
                             ))}
                           </div>
                         </div>
                       </div>
 
-                      <Quote className="w-6 h-6 text-[#D4CDBC] fill-[#D4CDBC]/30 shrink-0" />
+                      <Quote className="w-6 h-6 text-sand-dark fill-sand-dark/30 shrink-0" />
                     </div>
 
                     {/* Review Quote Body */}
-                    <p className="mt-4 text-xs sm:text-sm font-body text-[#242A25]/85 leading-relaxed italic">
+                    <p className="mt-4 text-xs sm:text-sm font-body text-charcoal/85 leading-relaxed italic">
                       &lsquo;{CUSTOMER_REVIEWS[startIndex].review}&rsquo;
                     </p>
                   </div>
 
                   {/* Trip Tag & Slide Indicator */}
-                  <div className="mt-4 pt-3 border-t border-[#E8E3D8]/60 flex items-center justify-between">
-                    <span className="text-xs font-body font-semibold text-[#F36B12]">
+                  <div className="mt-4 pt-3 border-t border-sand/60 flex items-center justify-between">
+                    <span className="text-xs font-body font-semibold text-adventure-orange">
                       {CUSTOMER_REVIEWS[startIndex].trip}
                     </span>
-                    <span className="text-[11px] font-body text-[#576259]">
+                    <span className="text-[11px] font-body text-charcoal-muted">
                       {startIndex + 1} of {totalReviews}
                     </span>
                   </div>
@@ -212,13 +212,13 @@ export default function ReviewsSection() {
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0, scale: 0.96 }}
                     transition={{ duration: 0.35, delay: i * 0.05 }}
-                    className="bg-white rounded-2xl sm:rounded-3xl p-6 sm:p-7 border border-[#E8E3D8] shadow-sm hover:shadow-lg transition-shadow duration-300 flex flex-col justify-between"
+                    className="bg-white rounded-2xl sm:rounded-3xl p-6 sm:p-7 border border-sand shadow-sm hover:shadow-lg transition-shadow duration-300 flex flex-col justify-between"
                   >
                     <div>
                       {/* Top Row: Avatar, Name, Stars, and Quote Icon */}
-                      <div className="flex items-center justify-between pb-4 border-b border-[#E8E3D8]/60">
+                      <div className="flex items-center justify-between pb-4 border-b border-sand/60">
                         <div className="flex items-center gap-3.5">
-                          <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-[#E8E3D8] shrink-0 bg-[#E8E3D8]/50">
+                          <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-sand shrink-0 bg-sand/50">
                             <Image
                               src={review.avatar}
                               alt={review.name}
@@ -229,7 +229,7 @@ export default function ReviewsSection() {
                           </div>
 
                           <div>
-                            <h3 className="font-heading font-extrabold text-xl text-[#173B2B] leading-tight">
+                            <h3 className="font-heading font-extrabold text-xl text-forest-green leading-tight">
                               {review.name}
                             </h3>
 
@@ -238,7 +238,7 @@ export default function ReviewsSection() {
                               {[...Array(review.rating)].map((_, s) => (
                                 <Star
                                   key={s}
-                                  className="w-4 h-4 fill-[#F36B12] text-[#F36B12]"
+                                  className="w-4 h-4 fill-adventure-orange text-adventure-orange"
                                 />
                               ))}
                             </div>
@@ -246,18 +246,18 @@ export default function ReviewsSection() {
                         </div>
 
                         {/* Double Quote Icon matching reference */}
-                        <Quote className="w-7 h-7 text-[#D4CDBC] fill-[#D4CDBC]/30 shrink-0" />
+                        <Quote className="w-7 h-7 text-sand-dark fill-sand-dark/30 shrink-0" />
                       </div>
 
                       {/* Review Quote Body */}
-                      <p className="mt-5 text-sm sm:text-base font-body text-[#242A25]/85 leading-relaxed italic">
+                      <p className="mt-5 text-sm sm:text-base font-body text-charcoal/85 leading-relaxed italic">
                         &lsquo;{review.review}&rsquo;
                       </p>
                     </div>
 
                     {/* Trip Tag */}
-                    <div className="mt-5 pt-3 border-t border-[#E8E3D8]/60">
-                      <span className="text-xs font-body font-semibold text-[#F36B12]">
+                    <div className="mt-5 pt-3 border-t border-sand/60">
+                      <span className="text-xs font-body font-semibold text-adventure-orange">
                         {review.trip}
                       </span>
                     </div>
@@ -271,7 +271,7 @@ export default function ReviewsSection() {
           <button
             type="button"
             onClick={handleNext}
-            className="absolute right-0 sm:-right-6 z-20 w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white/95 border border-[#242A25]/30 hover:border-[#173B2B] hover:bg-[#173B2B] text-[#173B2B] hover:text-white flex items-center justify-center shadow-md transition-all duration-200 focus-visible:ring-2 focus-visible:ring-[#F36B12] active:scale-95"
+            className="absolute right-0 sm:-right-6 z-20 w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white/95 border border-charcoal/30 hover:border-forest-green hover:bg-forest-green text-forest-green hover:text-white flex items-center justify-center shadow-md transition-all duration-200 focus-visible:ring-2 focus-visible:ring-adventure-orange active:scale-95"
             aria-label="Next review"
           >
             <ChevronRight className="w-5 h-5" />
@@ -286,10 +286,10 @@ export default function ReviewsSection() {
               type="button"
               onClick={() => setStartIndex(idx)}
               aria-label={`Go to review slide ${idx + 1}`}
-              className={`h-2.5 rounded-full transition-all duration-200 focus-visible:ring-2 focus-visible:ring-[#F36B12] ${
+              className={`h-2.5 rounded-full transition-all duration-200 focus-visible:ring-2 focus-visible:ring-adventure-orange ${
                 startIndex === idx
-                  ? "w-8 bg-[#F36B12]"
-                  : "w-2.5 bg-[#D4CDBC] hover:bg-[#173B2B]"
+                  ? "w-8 bg-adventure-orange"
+                  : "w-2.5 bg-sand-dark hover:bg-forest-green"
               }`}
             />
           ))}

@@ -159,9 +159,9 @@ function EnquiryForm({
       )}
 
       {/* 🌟 Highlighted "Enquiring For" Card */}
-      <div className="bg-[#173B2B]/5 border-2 border-[#173B2B]/20 rounded-2xl p-3 sm:p-3.5 flex items-center gap-3.5 relative overflow-hidden transition-all">
+      <div className="bg-forest-green/5 border-2 border-forest-green/20 rounded-2xl p-3 sm:p-3.5 flex items-center gap-3.5 relative overflow-hidden transition-all">
         {displayImage ? (
-          <div className="relative w-14 h-14 sm:w-16 sm:h-16 rounded-xl overflow-hidden shrink-0 border border-[#173B2B]/15 shadow-sm bg-white">
+          <div className="relative w-14 h-14 sm:w-16 sm:h-16 rounded-xl overflow-hidden shrink-0 border border-forest-green/15 shadow-sm bg-white">
             <Image
               src={displayImage}
               alt={activity}
@@ -171,37 +171,37 @@ function EnquiryForm({
             />
           </div>
         ) : (
-          <div className="w-14 h-14 rounded-xl bg-[#F36B12]/15 border border-[#F36B12]/30 flex items-center justify-center shrink-0 text-[#F36B12]">
+          <div className="w-14 h-14 rounded-xl bg-adventure-orange/15 border border-adventure-orange/30 flex items-center justify-center shrink-0 text-adventure-orange">
             <Sparkles className="w-6 h-6" />
           </div>
         )}
 
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-2 mb-1 flex-wrap">
-            <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-body font-bold tracking-wider uppercase bg-[#F36B12] text-white shadow-xs">
+            <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-body font-bold tracking-wider uppercase bg-adventure-orange text-white shadow-xs">
               Enquiring For
             </span>
             {displayLocation && (
-              <span className="text-[11px] font-body text-[#576259] truncate font-medium flex items-center gap-0.5">
-                <MapPin className="w-3 h-3 text-[#173B2B]/70 shrink-0" />
+              <span className="text-[11px] font-body text-charcoal-muted truncate font-medium flex items-center gap-0.5">
+                <MapPin className="w-3 h-3 text-forest-green/70 shrink-0" />
                 <span className="truncate">{displayLocation}</span>
               </span>
             )}
           </div>
 
-          <h3 className="font-heading font-extrabold text-sm sm:text-base text-[#173B2B] leading-snug line-clamp-2">
+          <h3 className="font-heading font-extrabold text-sm sm:text-base text-forest-green leading-snug line-clamp-2">
             {activity}
           </h3>
 
           {(displayPrice || displayGroupLabel) && (
             <div className="flex items-center gap-2 mt-1 flex-wrap">
               {displayPrice && (
-                <span className="text-xs font-body font-bold text-[#F36B12]">
+                <span className="text-xs font-body font-bold text-adventure-orange">
                   {displayPrice}
                 </span>
               )}
               {displayGroupLabel && (
-                <span className="text-[10px] font-body text-[#576259] truncate">
+                <span className="text-[10px] font-body text-charcoal-muted truncate">
                   • {displayGroupLabel}
                 </span>
               )}
@@ -212,11 +212,11 @@ function EnquiryForm({
 
       {/* Field 1: Your Name */}
       <div>
-        <label className="block text-xs font-body font-bold text-[#173B2B] uppercase tracking-wider mb-1.5">
-          Your Name <span className="text-[#F36B12]">*</span>
+        <label className="block text-xs font-body font-bold text-forest-green uppercase tracking-wider mb-1.5">
+          Your Name <span className="text-adventure-orange">*</span>
         </label>
         <div className="relative">
-          <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-[#576259]">
+          <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-charcoal-muted">
             <User className="w-4 h-4" />
           </div>
           <input
@@ -228,7 +228,7 @@ function EnquiryForm({
               if (error) setError("");
             }}
             placeholder="Enter your full name"
-            className="w-full pl-9 pr-4 py-2.5 rounded-xl bg-white border border-[#E8E3D8] text-[#242A25] placeholder:text-[#242A25]/40 text-sm font-body focus:border-[#F36B12] focus:ring-2 focus:ring-[#F36B12]/20 transition-all outline-none"
+            className="w-full pl-9 pr-4 py-2.5 rounded-xl bg-white border border-sand text-charcoal placeholder:text-charcoal/40 text-sm font-body focus:border-adventure-orange focus:ring-2 focus:ring-adventure-orange/20 transition-all outline-none"
           />
         </div>
       </div>
@@ -236,21 +236,21 @@ function EnquiryForm({
       {/* Field 2: Select Activity / Service (Full Catalog List) */}
       <div>
         <div className="flex items-center justify-between mb-1.5">
-          <label className="block text-xs font-body font-bold text-[#173B2B] uppercase tracking-wider">
+          <label className="block text-xs font-body font-bold text-forest-green uppercase tracking-wider">
             Select Activity / Expedition
           </label>
-          <span className="text-[11px] text-[#576259] font-body">
+          <span className="text-[11px] text-charcoal-muted font-body">
             32+ Treks & Adventures
           </span>
         </div>
         <div className="relative">
-          <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-[#F36B12]">
+          <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-adventure-orange">
             <Sparkles className="w-4 h-4" />
           </div>
           <select
             value={activity}
             onChange={(e) => setActivity(e.target.value)}
-            className="w-full pl-9 pr-8 py-2.5 rounded-xl bg-white border border-[#E8E3D8] text-[#242A25] text-sm font-body font-medium focus:border-[#F36B12] focus:ring-2 focus:ring-[#F36B12]/20 transition-all outline-none appearance-none cursor-pointer"
+            className="w-full pl-9 pr-8 py-2.5 rounded-xl bg-white border border-sand text-charcoal text-sm font-body font-medium focus:border-adventure-orange focus:ring-2 focus:ring-adventure-orange/20 transition-all outline-none appearance-none cursor-pointer"
           >
             {/* Custom or selected activity not in standard list */}
             {isCustomOption && (
@@ -388,7 +388,7 @@ function EnquiryForm({
               ))}
             </optgroup>
           </select>
-          <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none text-[#576259]">
+          <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none text-charcoal-muted">
             <svg className="w-4 h-4" viewBox="0 0 20 20" fill="currentColor">
               <path
                 fillRule="evenodd"
@@ -402,25 +402,25 @@ function EnquiryForm({
 
       {/* Field 3: Preferred Date */}
       <div>
-        <label className="block text-xs font-body font-bold text-[#173B2B] uppercase tracking-wider mb-1.5">
+        <label className="block text-xs font-body font-bold text-forest-green uppercase tracking-wider mb-1.5">
           Preferred Date
         </label>
         <div className="relative">
-          <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-[#576259]">
+          <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-charcoal-muted">
             <Calendar className="w-4 h-4" />
           </div>
           <input
             type="date"
             value={date}
             onChange={(e) => setDate(e.target.value)}
-            className="w-full pl-9 pr-4 py-2.5 rounded-xl bg-white border border-[#E8E3D8] text-[#242A25] text-sm font-body focus:border-[#F36B12] focus:ring-2 focus:ring-[#F36B12]/20 transition-all outline-none"
+            className="w-full pl-9 pr-4 py-2.5 rounded-xl bg-white border border-sand text-charcoal text-sm font-body focus:border-adventure-orange focus:ring-2 focus:ring-adventure-orange/20 transition-all outline-none"
           />
         </div>
       </div>
 
       {/* Field 4: Group Size (Chips Selector) */}
       <div>
-        <label className="block text-xs font-body font-bold text-[#173B2B] uppercase tracking-wider mb-1.5">
+        <label className="block text-xs font-body font-bold text-forest-green uppercase tracking-wider mb-1.5">
           Group Size / Number of Trekkers
         </label>
         <div className="flex flex-wrap gap-2">
@@ -431,11 +431,11 @@ function EnquiryForm({
               onClick={() => setGroupSize(size)}
               className={`text-xs font-body font-medium px-3 py-1.5 rounded-lg border transition-all flex items-center gap-1.5 cursor-pointer ${
                 groupSize === size
-                  ? "bg-[#173B2B] text-white border-[#173B2B] shadow-sm font-semibold"
-                  : "bg-white text-[#242A25]/80 border-[#E8E3D8] hover:border-[#173B2B]"
+                  ? "bg-forest-green text-white border-forest-green shadow-sm font-semibold"
+                  : "bg-white text-charcoal/80 border-sand hover:border-forest-green"
               }`}
             >
-              {groupSize === size && <Check className="w-3 h-3 text-[#F36B12]" />}
+              {groupSize === size && <Check className="w-3 h-3 text-adventure-orange" />}
               <span>{size}</span>
             </button>
           ))}
@@ -444,11 +444,11 @@ function EnquiryForm({
 
       {/* Field 5: Special Requests / Notes (Optional) */}
       <div>
-        <label className="block text-xs font-body font-bold text-[#173B2B] uppercase tracking-wider mb-1.5">
+        <label className="block text-xs font-body font-bold text-forest-green uppercase tracking-wider mb-1.5">
           Special Notes / Pickup Location (Optional)
         </label>
         <div className="relative">
-          <div className="absolute top-2.5 left-3 pointer-events-none text-[#576259]">
+          <div className="absolute top-2.5 left-3 pointer-events-none text-charcoal-muted">
             <MessageSquare className="w-4 h-4" />
           </div>
           <textarea
@@ -456,7 +456,7 @@ function EnquiryForm({
             value={notes}
             onChange={(e) => setNotes(e.target.value)}
             placeholder="e.g. North Goa pickup, beginner trekker, sunrise timing..."
-            className="w-full pl-9 pr-4 py-2 rounded-xl bg-white border border-[#E8E3D8] text-[#242A25] placeholder:text-[#242A25]/40 text-sm font-body focus:border-[#F36B12] focus:ring-2 focus:ring-[#F36B12]/20 transition-all outline-none resize-none"
+            className="w-full pl-9 pr-4 py-2 rounded-xl bg-white border border-sand text-charcoal placeholder:text-charcoal/40 text-sm font-body focus:border-adventure-orange focus:ring-2 focus:ring-adventure-orange/20 transition-all outline-none resize-none"
           />
         </div>
       </div>
@@ -465,12 +465,12 @@ function EnquiryForm({
       <div className="pt-2">
         <button
           type="submit"
-          className="w-full py-3.5 px-6 rounded-2xl bg-[#F36B12] hover:bg-[#dc5e0c] text-white font-body font-bold text-sm sm:text-base flex items-center justify-center gap-2.5 shadow-lg shadow-[#F36B12]/30 active:scale-98 transition-all focus-visible:ring-2 focus-visible:ring-[#173B2B] cursor-pointer"
+          className="w-full py-3.5 px-6 rounded-2xl bg-adventure-orange hover:bg-adventure-orange-hover text-white font-body font-bold text-sm sm:text-base flex items-center justify-center gap-2.5 shadow-lg shadow-adventure-orange/30 active:scale-98 transition-all focus-visible:ring-2 focus-visible:ring-forest-green cursor-pointer"
         >
           <WhatsAppIcon className="w-5 h-5 fill-white text-transparent" />
           <span>Send Enquiry to WhatsApp</span>
         </button>
-        <p className="text-center text-[11px] text-[#576259] mt-2 font-body">
+        <p className="text-center text-[11px] text-charcoal-muted mt-2 font-body">
           Instant response from our verified local Goan guides • No spam guaranteed
         </p>
       </div>
@@ -528,16 +528,16 @@ export default function EnquiryModal() {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.94, y: 15 }}
             transition={{ duration: 0.25, ease: "easeOut" }}
-            className="relative w-full max-w-lg bg-[#F8F6F0] rounded-3xl shadow-2xl overflow-hidden z-10 border border-[#E8E3D8] my-auto max-h-[92vh] flex flex-col"
+            className="relative w-full max-w-lg bg-warm-ivory rounded-3xl shadow-2xl overflow-hidden z-10 border border-sand my-auto max-h-[92vh] flex flex-col"
           >
             {/* Header: Forest Green with Brand Accent */}
-            <div className="bg-[#173B2B] text-white p-5 sm:p-6 relative overflow-hidden shrink-0">
+            <div className="bg-forest-green text-white p-5 sm:p-6 relative overflow-hidden shrink-0">
               {/* Subtle background glow */}
-              <div className="absolute top-0 right-0 w-48 h-48 bg-[#F36B12]/15 rounded-full blur-2xl pointer-events-none" />
+              <div className="absolute top-0 right-0 w-48 h-48 bg-adventure-orange/15 rounded-full blur-2xl pointer-events-none" />
 
               <div className="flex items-center justify-between relative z-10">
                 <div className="flex items-center gap-3">
-                  <div className="relative w-10 h-10 rounded-full overflow-hidden border-2 border-[#F36B12] bg-[#F36B12] shrink-0 shadow-sm">
+                  <div className="relative w-10 h-10 rounded-full overflow-hidden border-2 border-adventure-orange bg-adventure-orange shrink-0 shadow-sm">
                     <Image
                       src="/logo.jpg"
                       alt="Trek Me @ Goa Logo"
@@ -553,7 +553,7 @@ export default function EnquiryModal() {
                     >
                       Plan Your Goa Adventure
                     </h2>
-                    <p className="text-xs text-[#E8E3D8]/80 font-body">
+                    <p className="text-xs text-sand/80 font-body">
                       Submit details directly to our guides via WhatsApp
                     </p>
                   </div>
@@ -563,7 +563,7 @@ export default function EnquiryModal() {
                 <button
                   type="button"
                   onClick={closeEnquiryModal}
-                  className="p-2 rounded-full text-white/80 hover:text-white bg-white/10 hover:bg-white/20 transition-colors focus-visible:ring-2 focus-visible:ring-[#F36B12] cursor-pointer"
+                  className="p-2 rounded-full text-white/80 hover:text-white bg-white/10 hover:bg-white/20 transition-colors focus-visible:ring-2 focus-visible:ring-adventure-orange cursor-pointer"
                   aria-label="Close enquiry modal"
                 >
                   <X className="w-5 h-5" />

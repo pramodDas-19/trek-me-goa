@@ -46,7 +46,7 @@ export default function ListingCardMedia({
       />
 
       {/* Gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-black/10 pointer-events-none" />
+      <div className="absolute inset-0 bg-linear-to-t from-black/55 via-transparent to-black/10 pointer-events-none" />
 
       {/* Location Badge */}
       <div className="absolute bottom-4 left-4 z-10 pointer-events-none">
@@ -71,7 +71,7 @@ export default function ListingCardMedia({
             type="button"
             onClick={handlePrev}
             aria-label="Previous photo"
-            className="absolute left-2.5 top-1/2 -translate-y-1/2 z-10 flex h-8 w-8 items-center justify-center rounded-full bg-black/50 text-white backdrop-blur-md transition hover:bg-[#F36B12] active:scale-95 shadow-md"
+            className="absolute left-2.5 top-1/2 -translate-y-1/2 z-10 flex h-8 w-8 items-center justify-center rounded-full bg-black/50 text-white backdrop-blur-md transition hover:bg-adventure-orange active:scale-95 shadow-md"
           >
             <ChevronLeft className="h-4 w-4" />
           </button>
@@ -81,7 +81,7 @@ export default function ListingCardMedia({
             type="button"
             onClick={handleNext}
             aria-label="Next photo"
-            className="absolute right-2.5 top-1/2 -translate-y-1/2 z-10 flex h-8 w-8 items-center justify-center rounded-full bg-black/50 text-white backdrop-blur-md transition hover:bg-[#F36B12] active:scale-95 shadow-md"
+            className="absolute right-2.5 top-1/2 -translate-y-1/2 z-10 flex h-8 w-8 items-center justify-center rounded-full bg-black/50 text-white backdrop-blur-md transition hover:bg-adventure-orange active:scale-95 shadow-md"
           >
             <ChevronRight className="h-4 w-4" />
           </button>
@@ -100,7 +100,7 @@ export default function ListingCardMedia({
                 aria-label={`Jump to slide ${idx + 1}`}
                 className={`h-2 rounded-full transition-all ${
                   idx === currentIndex
-                    ? "w-5 bg-[#F36B12]"
+                    ? "w-5 bg-adventure-orange"
                     : "w-2 bg-white/70 hover:bg-white"
                 }`}
               />

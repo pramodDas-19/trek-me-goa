@@ -41,12 +41,12 @@ export default function ServicesSection() {
   return (
     <section
       id="services"
-      className="py-16 md:py-28 bg-[#F8F6F0] relative overflow-hidden"
+      className="py-16 md:py-28 bg-warm-ivory relative overflow-hidden"
       aria-label="Trekking and Adventure Services"
     >
       {/* Background ambient accents */}
-      <div className="absolute top-1/2 left-0 w-96 h-96 bg-[#49634B]/10 rounded-full blur-3xl pointer-events-none -translate-y-1/2" />
-      <div className="absolute top-1/2 right-0 w-96 h-96 bg-[#F36B12]/5 rounded-full blur-3xl pointer-events-none -translate-y-1/2" />
+      <div className="absolute top-1/2 left-0 w-96 h-96 bg-leaf-green/10 rounded-full blur-3xl pointer-events-none -translate-y-1/2" />
+      <div className="absolute top-1/2 right-0 w-96 h-96 bg-adventure-orange/5 rounded-full blur-3xl pointer-events-none -translate-y-1/2" />
 
       {/* Guaranteed CSS Keyframes for Marquee */}
       <style>{`
@@ -80,9 +80,9 @@ export default function ServicesSection() {
           initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="inline-flex items-center gap-2 text-xs font-body font-bold text-[#F36B12] uppercase tracking-wider mb-2.5 px-3 py-1 rounded-full bg-white border border-[#E8E3D8] shadow-sm"
+          className="inline-flex items-center gap-2 text-xs font-body font-bold text-adventure-orange uppercase tracking-wider mb-2.5 px-3 py-1 rounded-full bg-white border border-sand shadow-sm"
         >
-          <Sparkles className="w-3.5 h-3.5 text-[#F36B12]" />
+          <Sparkles className="w-3.5 h-3.5 text-adventure-orange" />
           <span>All 11 Adventure Categories • 30 Listings</span>
         </motion.div>
 
@@ -91,7 +91,7 @@ export default function ServicesSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.1 }}
-          className="font-heading font-extrabold text-3xl sm:text-5xl md:text-6xl text-[#173B2B] tracking-tight uppercase"
+          className="font-heading font-extrabold text-3xl sm:text-5xl md:text-6xl text-forest-green tracking-tight uppercase"
         >
           Our Adventure Services
         </motion.h2>
@@ -101,7 +101,7 @@ export default function ServicesSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.2 }}
-          className="mt-3 text-sm sm:text-lg text-[#242A25]/80 font-body max-w-2xl mx-auto leading-relaxed"
+          className="mt-3 text-sm sm:text-lg text-charcoal/80 font-body max-w-2xl mx-auto leading-relaxed"
         >
           Explore all 11 curated expedition styles across Goa&apos;s wildest waterfalls, mountain peaks,
           and coastal waterways.
@@ -112,7 +112,7 @@ export default function ServicesSection() {
       <div className="block md:hidden max-w-7xl mx-auto px-4 relative z-10">
         {/* Navigation Controls Row */}
         <div className="flex items-center justify-between mb-3.5">
-          <span className="text-xs font-body font-semibold text-[#173B2B] uppercase tracking-wider">
+          <span className="text-xs font-body font-semibold text-forest-green uppercase tracking-wider">
             All 11 Categories (2 at once)
           </span>
 
@@ -122,10 +122,10 @@ export default function ServicesSection() {
               type="button"
               onClick={() => handleMobileScroll("left")}
               disabled={!canScrollLeft}
-              className={`w-9 h-9 rounded-full bg-white border border-[#E8E3D8] flex items-center justify-center shadow-sm transition-all focus-visible:ring-2 focus-visible:ring-[#F36B12] ${
+              className={`w-9 h-9 rounded-full bg-white border border-sand flex items-center justify-center shadow-sm transition-all focus-visible:ring-2 focus-visible:ring-adventure-orange ${
                 canScrollLeft
-                  ? "text-[#173B2B] hover:bg-[#173B2B] hover:text-white active:scale-95"
-                  : "text-[#D4CDBC] opacity-50 cursor-not-allowed"
+                  ? "text-forest-green hover:bg-forest-green hover:text-white active:scale-95"
+                  : "text-sand-dark opacity-50 cursor-not-allowed"
               }`}
               aria-label="Previous categories"
             >
@@ -136,10 +136,10 @@ export default function ServicesSection() {
               type="button"
               onClick={() => handleMobileScroll("right")}
               disabled={!canScrollRight}
-              className={`w-9 h-9 rounded-full bg-white border border-[#E8E3D8] flex items-center justify-center shadow-sm transition-all focus-visible:ring-2 focus-visible:ring-[#F36B12] ${
+              className={`w-9 h-9 rounded-full bg-white border border-sand flex items-center justify-center shadow-sm transition-all focus-visible:ring-2 focus-visible:ring-adventure-orange ${
                 canScrollRight
-                  ? "text-[#173B2B] hover:bg-[#173B2B] hover:text-white active:scale-95"
-                  : "text-[#D4CDBC] opacity-50 cursor-not-allowed"
+                  ? "text-forest-green hover:bg-forest-green hover:text-white active:scale-95"
+                  : "text-sand-dark opacity-50 cursor-not-allowed"
               }`}
               aria-label="Next categories"
             >
@@ -158,7 +158,7 @@ export default function ServicesSection() {
           {SERVICE_CATEGORIES.map((category) => (
             <div
               key={`mobile-${category.id}`}
-              className="snap-start shrink-0 w-[calc(50%-6px)] min-w-[155px] max-w-[210px]"
+              className="snap-start shrink-0 w-[calc(50%-6px)] min-w-38.75 max-w-52.5"
             >
               <ServiceCard category={category} compact />
             </div>
@@ -169,8 +169,8 @@ export default function ServicesSection() {
       {/* DESKTOP VIEW: Continuous Dual Marquee Sliders */}
       <div className="hidden md:block relative w-full overflow-hidden space-y-6 sm:space-y-8">
         {/* Left & Right Gradient Blur Edges for Elegant Fade In/Out */}
-        <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-12 sm:w-32 bg-gradient-to-r from-[#F8F6F0] via-[#F8F6F0]/80 to-transparent z-20" />
-        <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-12 sm:w-32 bg-gradient-to-l from-[#F8F6F0] via-[#F8F6F0]/80 to-transparent z-20" />
+        <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-12 sm:w-32 bg-linear-to-r from-warm-ivory via-warm-ivory/80 to-transparent z-20" />
+        <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-12 sm:w-32 bg-linear-to-l from-warm-ivory via-warm-ivory/80 to-transparent z-20" />
 
         {/* Slider 1: Moving Right to Left */}
         <div className="flex overflow-hidden py-2">
@@ -197,17 +197,17 @@ export default function ServicesSection() {
           initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="p-6 sm:p-8 rounded-2xl bg-white border border-[#E8E3D8] shadow-sm flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left"
+          className="p-6 sm:p-8 rounded-2xl bg-white border border-sand shadow-sm flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left"
         >
           <div className="flex items-center gap-4">
-            <div className="p-3.5 rounded-2xl bg-[#173B2B]/5 text-[#F36B12] shrink-0 hidden sm:block">
+            <div className="p-3.5 rounded-2xl bg-forest-green/5 text-adventure-orange shrink-0 hidden sm:block">
               <Compass className="w-7 h-7" />
             </div>
             <div>
-              <h3 className="font-heading font-bold text-xl sm:text-2xl text-[#173B2B] uppercase">
+              <h3 className="font-heading font-bold text-xl sm:text-2xl text-forest-green uppercase">
                 Looking for a customized group trek or corporate expedition?
               </h3>
-              <p className="mt-1 text-sm font-body text-[#242A25]/80 max-w-xl">
+              <p className="mt-1 text-sm font-body text-charcoal/80 max-w-xl">
                 We organize private trail logistics, pickups across North & South Goa, certified safety gear, and local Goan meals.
               </p>
             </div>
@@ -216,7 +216,7 @@ export default function ServicesSection() {
           <button
             type="button"
             onClick={() => openEnquiryModal("Custom Group / Corporate Trek")}
-            className="inline-flex items-center gap-2 bg-[#F36B12] hover:bg-[#dc5e0c] text-white font-body font-bold text-sm px-6 py-3.5 rounded-xl shadow-md transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 shrink-0"
+            className="inline-flex items-center gap-2 bg-adventure-orange hover:bg-adventure-orange-hover text-white font-body font-bold text-sm px-6 py-3.5 rounded-xl shadow-md transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 shrink-0"
           >
             <MessageSquare className="w-4 h-4" />
             <span>Enquire Custom Dates</span>

@@ -76,10 +76,10 @@ export default function Footer() {
             <Link
               href="#hero"
               onClick={handleScrollToTop}
-              className="flex items-center gap-3.5 group focus-visible:ring-2 focus-visible:ring-[#F36B12] rounded-lg transition-transform"
+              className="flex items-center gap-3.5 group focus-visible:ring-2 focus-visible:ring-adventure-orange rounded-lg transition-transform"
               aria-label="Trek Me @ Goa — Scroll to top"
             >
-              <div className="relative w-14 h-14 sm:w-16 sm:h-16 rounded-full overflow-hidden border-2 border-[#F36B12] bg-[#F36B12] shrink-0 shadow-md">
+              <div className="relative w-14 h-14 sm:w-16 sm:h-16 rounded-full overflow-hidden border-2 border-adventure-orange bg-adventure-orange shrink-0 shadow-md">
                 <Image
                   src="/logo.jpg"
                   alt="Trek Me @ Goa Official Logo"
@@ -88,7 +88,7 @@ export default function Footer() {
                   className="object-cover group-hover:scale-105 transition-transform duration-300"
                 />
               </div>
-              <span className="font-satisfy text-3xl sm:text-4xl text-white group-hover:text-[#F36B12] transition-colors leading-none select-none tracking-wide">
+              <span className="font-satisfy text-3xl sm:text-4xl text-white group-hover:text-adventure-orange transition-colors leading-none select-none tracking-wide">
                 Trek me @ goa
               </span>
             </Link>
@@ -105,7 +105,7 @@ export default function Footer() {
                   <a
                     href={link.href}
                     onClick={(e) => handleLinkClick(e, link.href)}
-                    className="hover:text-[#F36B12] transition-colors inline-block focus-visible:ring-2 focus-visible:ring-[#F36B12] rounded"
+                    className="hover:text-adventure-orange transition-colors inline-block focus-visible:ring-2 focus-visible:ring-adventure-orange rounded"
                   >
                     {link.name}
                   </a>
@@ -124,7 +124,7 @@ export default function Footer() {
               <button
                 type="button"
                 onClick={() => openEnquiryModal("General Goa Trek & Tour Enquiry")}
-                className="flex items-center gap-2.5 text-white/85 hover:text-white group transition-colors focus-visible:ring-2 focus-visible:ring-[#F36B12] rounded py-0.5 cursor-pointer text-left"
+                className="flex items-center gap-2.5 text-white/85 hover:text-white group transition-colors focus-visible:ring-2 focus-visible:ring-adventure-orange rounded py-0.5 cursor-pointer text-left"
                 aria-label="Enquire on WhatsApp"
               >
                 <div className="w-6 h-6 rounded-full bg-[#25D366] flex items-center justify-center shrink-0 text-white shadow-sm group-hover:scale-110 transition-transform">
@@ -138,10 +138,10 @@ export default function Footer() {
                 href={BRAND_CONFIG.instagramUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2.5 text-white/85 hover:text-white group transition-colors focus-visible:ring-2 focus-visible:ring-[#F36B12] rounded py-0.5"
+                className="flex items-center gap-2.5 text-white/85 hover:text-white group transition-colors focus-visible:ring-2 focus-visible:ring-adventure-orange rounded py-0.5"
                 aria-label="Follow on Instagram"
               >
-                <div className="w-6 h-6 rounded-md border border-[#F36B12] text-[#F36B12] flex items-center justify-center shrink-0 group-hover:bg-[#F36B12] group-hover:text-white transition-all">
+                <div className="w-6 h-6 rounded-md border border-adventure-orange text-adventure-orange flex items-center justify-center shrink-0 group-hover:bg-adventure-orange group-hover:text-white transition-all">
                   <InstagramIcon className="w-3.5 h-3.5" />
                 </div>
                 <span>Follow on Instagram</span>

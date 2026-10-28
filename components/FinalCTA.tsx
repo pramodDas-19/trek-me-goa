@@ -27,7 +27,7 @@ export default function FinalCTA() {
   return (
     <section
       id="contact"
-      className="relative min-h-[460px] sm:min-h-[500px] flex items-center overflow-hidden bg-[#0E291C] py-12 sm:py-20"
+      className="relative min-h-115 sm:min-h-125 flex items-center overflow-hidden bg-[#0E291C] py-12 sm:py-20"
       aria-label="Book Your Goa Expedition"
     >
       {/* Background Image: Golden Hour Tropical Shoreline */}
@@ -41,7 +41,7 @@ export default function FinalCTA() {
         />
 
         {/* Subtle, soft scrim on desktop */}
-        <div className="absolute inset-0 bg-gradient-to-r from-white/40 via-white/10 to-transparent hidden sm:block w-full md:w-[55%]" />
+        <div className="absolute inset-0 bg-linear-to-r from-white/40 via-white/10 to-transparent hidden sm:block w-full md:w-[55%]" />
       </div>
 
       {/* Section Content */}
@@ -56,7 +56,7 @@ export default function FinalCTA() {
               viewport={{ once: true }}
               className="mb-2"
             >
-              <span className="inline-flex items-center px-3 py-1 rounded-full bg-[#F36B12]/15 text-[#F36B12] text-xs font-body font-bold tracking-wider uppercase shadow-xs">
+              <span className="inline-flex items-center px-3 py-1 rounded-full bg-adventure-orange/15 text-adventure-orange text-xs font-body font-bold tracking-wider uppercase shadow-xs">
                 READY FOR YOUR NEXT ADVENTURE?
               </span>
             </motion.div>
@@ -69,14 +69,14 @@ export default function FinalCTA() {
               transition={{ delay: 0.1 }}
               className="relative inline-block"
             >
-              <h2 className="font-heading font-extrabold text-3xl sm:text-5xl md:text-6xl text-[#173B2B] tracking-tight uppercase leading-[0.98]">
+              <h2 className="font-heading font-extrabold text-3xl sm:text-5xl md:text-6xl text-forest-green tracking-tight uppercase leading-[0.98]">
                 EXPLORE THE REAL GOA <br />
                 WITH TREK ME @ GOA
               </h2>
 
               {/* Orange brush underline stroke */}
               <svg
-                className="w-28 sm:w-44 h-3 text-[#F36B12] mt-1 ml-24 sm:ml-48"
+                className="w-28 sm:w-44 h-3 text-adventure-orange mt-1 ml-24 sm:ml-48"
                 viewBox="0 0 150 12"
                 fill="currentColor"
                 aria-hidden="true"
@@ -91,7 +91,7 @@ export default function FinalCTA() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
-              className="mt-3.5 text-sm sm:text-base text-[#242A25] font-body max-w-xl leading-relaxed font-medium"
+              className="mt-3.5 text-sm sm:text-base text-charcoal font-body max-w-xl leading-relaxed font-medium"
             >
               Get in touch with us for custom treks, group tours and unique local experiences.
             </motion.p>
@@ -108,7 +108,7 @@ export default function FinalCTA() {
               <button
                 type="button"
                 onClick={() => openEnquiryModal("Custom Group / Corporate Trek")}
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 bg-[#F36B12] hover:bg-[#dc5e0c] text-white font-body font-bold text-sm sm:text-base px-6 py-3.5 rounded-full shadow-lg shadow-[#F36B12]/25 active:scale-95 transition-all focus-visible:ring-2 focus-visible:ring-[#173B2B]"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 bg-adventure-orange hover:bg-adventure-orange-hover text-white font-body font-bold text-sm sm:text-base px-6 py-3.5 rounded-full shadow-lg shadow-adventure-orange/25 active:scale-95 transition-all focus-visible:ring-2 focus-visible:ring-forest-green"
               >
                 <MessageCircle className="w-5 h-5 fill-white text-transparent" />
                 <span>Enquire on WhatsApp</span>
@@ -118,15 +118,15 @@ export default function FinalCTA() {
               <a
                 href="#services"
                 onClick={handleScrollToServices}
-                className="w-full sm:w-auto inline-flex items-center justify-center border border-[#173B2B]/40 hover:border-[#173B2B] text-[#173B2B] hover:bg-white/90 bg-white/70 font-body font-semibold text-sm sm:text-base px-6 py-3.5 rounded-full backdrop-blur-sm active:scale-95 transition-all focus-visible:ring-2 focus-visible:ring-[#F36B12]"
+                className="w-full sm:w-auto inline-flex items-center justify-center border border-forest-green/40 hover:border-forest-green text-forest-green hover:bg-white/90 bg-white/70 font-body font-semibold text-sm sm:text-base px-6 py-3.5 rounded-full backdrop-blur-sm active:scale-95 transition-all focus-visible:ring-2 focus-visible:ring-adventure-orange"
               >
                 <span>Explore Services</span>
               </a>
             </motion.div>
 
             {/* Mobile Cursive Brand Signature */}
-            <div className="mt-5 pt-3.5 border-t border-[#173B2B]/10 flex items-center justify-between sm:hidden select-none">
-              <span className="font-satisfy text-lg text-[#173B2B]">
+            <div className="mt-5 pt-3.5 border-t border-forest-green/10 flex items-center justify-between sm:hidden select-none">
+              <span className="font-satisfy text-lg text-forest-green">
                 Adventure • Nature • People • Goa
               </span>
             </div>
@@ -144,7 +144,7 @@ export default function FinalCTA() {
 
             {/* Orange brush underline stroke */}
             <svg
-              className="w-28 sm:w-36 h-3 text-[#F36B12] mt-1"
+              className="w-28 sm:w-36 h-3 text-adventure-orange mt-1"
               viewBox="0 0 150 12"
               fill="currentColor"
               aria-hidden="true"

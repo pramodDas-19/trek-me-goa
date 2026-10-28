@@ -59,7 +59,7 @@ export default function CustomerGallery() {
   return (
     <section
       id="gallery"
-      className="relative bg-[#173B2B] text-white pt-16 pb-20 overflow-hidden"
+      className="relative bg-forest-green text-white pt-16 pb-20 overflow-hidden"
       aria-label="Happy Customers Adventure Photo Gallery"
     >
       {/* Top Ripped / Brush Edge Divider matching reference image */}
@@ -67,7 +67,7 @@ export default function CustomerGallery() {
         <svg
           viewBox="0 0 1440 38"
           preserveAspectRatio="none"
-          className="w-full h-7 sm:h-10 text-[#F8F6F0] fill-current"
+          className="w-full h-7 sm:h-10 text-warm-ivory fill-current"
           aria-hidden="true"
         >
           <path d="M0,0 L1440,0 L1440,24 C1390,12 1340,32 1290,18 C1240,6 1190,28 1140,16 C1090,4 1040,26 990,14 C940,3 890,26 840,15 C790,5 740,28 690,17 C640,6 590,27 540,16 C490,5 440,27 390,16 C340,5 290,27 240,15 C190,5 140,28 90,16 C40,5 15,22 0,16 Z" />
@@ -83,7 +83,7 @@ export default function CustomerGallery() {
               initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-xs sm:text-sm font-body font-semibold text-[#E8E3D8]/85 uppercase tracking-[0.22em] block mb-2"
+              className="text-xs sm:text-sm font-body font-semibold text-sand/85 uppercase tracking-[0.22em] block mb-2"
             >
               OUR HAPPY EXPLORERS
             </motion.span>
@@ -96,12 +96,12 @@ export default function CustomerGallery() {
               className="relative inline-block"
             >
               <h2 className="font-heading font-extrabold text-4xl sm:text-5xl lg:text-6xl text-white tracking-tight uppercase leading-[0.95]">
-                MOMENTS <span className="text-[#F36B12]">FROM OUR</span> JOURNEYS
+                MOMENTS <span className="text-adventure-orange">FROM OUR</span> JOURNEYS
               </h2>
 
               {/* Orange brush underline stroke under "FROM OUR" */}
               <svg
-                className="w-28 sm:w-36 h-3 text-[#F36B12] mt-1 ml-40 sm:ml-52"
+                className="w-28 sm:w-36 h-3 text-adventure-orange mt-1 ml-40 sm:ml-52"
                 viewBox="0 0 150 12"
                 fill="currentColor"
                 aria-hidden="true"
@@ -117,7 +117,7 @@ export default function CustomerGallery() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="text-sm sm:text-base text-[#E8E3D8]/85 font-body max-w-md leading-relaxed lg:text-right"
+            className="text-sm sm:text-base text-sand/85 font-body max-w-md leading-relaxed lg:text-right"
           >
             A glimpse of our amazing travellers enjoying the treks, beaches and local experiences.
           </motion.p>
@@ -133,7 +133,7 @@ export default function CustomerGallery() {
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: (index % 5) * 0.05 }}
               onClick={() => handleOpenLightbox(index)}
-              className="group relative h-44 sm:h-52 rounded-2xl overflow-hidden cursor-pointer border border-[#49634B]/40 hover:border-[#F36B12]/80 shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 focus-visible:ring-2 focus-visible:ring-[#F36B12] bg-[#10291E]"
+              className="group relative h-44 sm:h-52 rounded-2xl overflow-hidden cursor-pointer border border-leaf-green/40 hover:border-adventure-orange/80 shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 focus-visible:ring-2 focus-visible:ring-adventure-orange bg-[#10291E]"
               tabIndex={0}
               role="button"
               aria-label={`View photo: ${photo.title}`}
@@ -154,11 +154,11 @@ export default function CustomerGallery() {
               />
 
               {/* Gradient Scrim on Hover */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <div className="absolute inset-0 bg-linear-to-t from-black/75 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
               {/* Bottom Caption on Hover */}
               <div className="absolute bottom-0 left-0 right-0 p-3 translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
-                <span className="text-[10px] uppercase font-semibold tracking-wider text-[#F36B12] block">
+                <span className="text-[10px] uppercase font-semibold tracking-wider text-adventure-orange block">
                   {photo.category}
                 </span>
                 <span className="text-xs font-heading font-bold text-white block leading-tight truncate">
@@ -174,7 +174,7 @@ export default function CustomerGallery() {
           <button
             type="button"
             onClick={() => openEnquiryModal("Photo Gallery & Upcoming Trek Dates")}
-            className="inline-flex items-center gap-2 border border-[#F36B12] text-[#F36B12] hover:bg-[#F36B12] hover:text-[#173B2B] font-body font-semibold text-sm px-7 py-3 rounded-full transition-all duration-200 transform hover:-translate-y-0.5 active:translate-y-0 shadow-sm cursor-pointer"
+            className="inline-flex items-center gap-2 border border-adventure-orange text-adventure-orange hover:bg-adventure-orange hover:text-forest-green font-body font-semibold text-sm px-7 py-3 rounded-full transition-all duration-200 transform hover:-translate-y-0.5 active:translate-y-0 shadow-sm cursor-pointer"
           >
             <span>View More Photos & Dates</span>
             <ArrowRight className="w-4 h-4" />
@@ -195,7 +195,7 @@ export default function CustomerGallery() {
           <button
             type="button"
             onClick={handleCloseLightbox}
-            className="absolute top-6 right-6 z-50 p-3 rounded-full bg-white/10 hover:bg-[#F36B12] hover:text-[#173B2B] text-white transition-colors focus-visible:ring-2 focus-visible:ring-white"
+            className="absolute top-6 right-6 z-50 p-3 rounded-full bg-white/10 hover:bg-adventure-orange hover:text-forest-green text-white transition-colors focus-visible:ring-2 focus-visible:ring-white"
             aria-label="Close Lightbox (Escape)"
           >
             <X className="w-6 h-6" />
@@ -208,7 +208,7 @@ export default function CustomerGallery() {
               e.stopPropagation();
               handlePrev();
             }}
-            className="absolute left-4 sm:left-8 top-1/2 -translate-y-1/2 z-50 p-3 rounded-full bg-white/10 hover:bg-[#F36B12] hover:text-[#173B2B] text-white transition-colors focus-visible:ring-2 focus-visible:ring-white"
+            className="absolute left-4 sm:left-8 top-1/2 -translate-y-1/2 z-50 p-3 rounded-full bg-white/10 hover:bg-adventure-orange hover:text-forest-green text-white transition-colors focus-visible:ring-2 focus-visible:ring-white"
             aria-label="Previous image (Left Arrow)"
           >
             <ChevronLeft className="w-6 h-6" />
@@ -220,7 +220,7 @@ export default function CustomerGallery() {
               e.stopPropagation();
               handleNext();
             }}
-            className="absolute right-4 sm:right-8 top-1/2 -translate-y-1/2 z-50 p-3 rounded-full bg-white/10 hover:bg-[#F36B12] hover:text-[#173B2B] text-white transition-colors focus-visible:ring-2 focus-visible:ring-white"
+            className="absolute right-4 sm:right-8 top-1/2 -translate-y-1/2 z-50 p-3 rounded-full bg-white/10 hover:bg-adventure-orange hover:text-forest-green text-white transition-colors focus-visible:ring-2 focus-visible:ring-white"
             aria-label="Next image (Right Arrow)"
           >
             <ChevronRight className="w-6 h-6" />
@@ -245,7 +245,7 @@ export default function CustomerGallery() {
             {/* Lightbox Caption & Details */}
             <div className="mt-4 text-center max-w-xl">
               <div className="flex items-center justify-center gap-3">
-                <span className="text-xs font-body text-[#F36B12] font-semibold uppercase tracking-wider">
+                <span className="text-xs font-body text-adventure-orange font-semibold uppercase tracking-wider">
                   {GALLERY_PHOTOS[selectedPhotoIndex].category}
                 </span>
                 <span className="text-xs text-white/50">•</span>
@@ -258,7 +258,7 @@ export default function CustomerGallery() {
                 {GALLERY_PHOTOS[selectedPhotoIndex].title}
               </h4>
 
-              <p className="mt-2 text-sm font-body text-[#E8E3D8]/85">
+              <p className="mt-2 text-sm font-body text-sand/85">
                 {GALLERY_PHOTOS[selectedPhotoIndex].caption}
               </p>
             </div>
